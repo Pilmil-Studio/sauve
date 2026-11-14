@@ -2,13 +2,13 @@
 
 **Français** · [English](README.en.md)
 
-[![Build](https://github.com/Relthdrarxash/sauve/actions/workflows/build.yml/badge.svg)](https://github.com/Relthdrarxash/sauve/actions/workflows/build.yml)
+[![Build](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml/badge.svg)](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml)
 
 Application Android de **premiers secours « Anti-Panique »**, 100 % hors-ligne, gratuite, sans publicité, sans inscription et sans aucune collecte de données. Fait partie de la suite d'applications de biens communs **Pilmil Studio** (avec *Lunaison*, *Sommelle*, *Respire* et *Sillon*).
 
 Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se rétrécit en tunnel. **Sauve** est pensée pour aller droit au but en moins de 300 ms, sans menu complexe, avec un guidage vocal et haptique mains-libres.
 
-**[Site officiel Sauve](https://relthdrarxash.github.io/sauve/)** · **[Télécharger la préversion (APK)](https://github.com/Relthdrarxash/sauve/releases/tag/dev)**
+**[Site officiel Sauve](https://pilmil-studio.github.io/sauve/)** · **[Télécharger la préversion (APK)](https://github.com/Pilmil-Studio/sauve/releases/tag/dev)**
 
 ---
 
@@ -41,7 +41,7 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 
 ## Installation
 
-- **APK direct :** Téléchargez la [préversion](https://github.com/Relthdrarxash/sauve/releases/tag/dev) (signée avec la clé de développement, une version signée de publication suivra).
+- **APK direct :** Téléchargez la [préversion](https://github.com/Pilmil-Studio/sauve/releases/tag/dev) (signée avec la clé de développement, une version signée de publication suivra).
 
 ---
 
@@ -55,10 +55,10 @@ Elle n'est pas encore publiée sur l'App Store. Chaque passage de la CI (workflo
 
 ## La suite Pilmil Studio
 
-- **[Respire](https://github.com/Relthdrarxash/respire) :** Déconnexion sereine & micro-pauses sans tracking
-- **[Lunaison](https://github.com/Relthdrarxash/lunaison) :** Suivi intime du cycle menstruel 100 % hors-ligne
-- **[Sommelle](https://github.com/Relthdrarxash/sommelle) :** Journal et régularité du sommeil sans pub ni compte
-- **[Sauve](https://github.com/Relthdrarxash/sauve) :** Premiers secours anti-panique 100 % hors-ligne
+- **[Respire](https://github.com/Pilmil-Studio/respire) :** Déconnexion sereine & micro-pauses sans tracking
+- **[Lunaison](https://github.com/Pilmil-Studio/lunaison) :** Suivi intime du cycle menstruel 100 % hors-ligne
+- **[Sommelle](https://github.com/Pilmil-Studio/sommelle) :** Journal et régularité du sommeil sans pub ni compte
+- **[Sauve](https://github.com/Pilmil-Studio/sauve) :** Premiers secours anti-panique 100 % hors-ligne
 
 ## Licence
 

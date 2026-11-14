@@ -2,13 +2,13 @@
 
 [Français](README.md) · **English**
 
-[![Build](https://github.com/Relthdrarxash/sauve/actions/workflows/build.yml/badge.svg)](https://github.com/Relthdrarxash/sauve/actions/workflows/build.yml)
+[![Build](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml/badge.svg)](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml)
 
 An **anti-panic first aid** Android application, 100% offline, free, ad-free, with no account, no tracking and zero internet permission. Part of the **Pilmil Studio** public interest suite (along with *Lunaison*, *Sommelle*, *Respire* and *Sillon*).
 
 In an emergency, adrenaline and panic induce tunnel vision and motor impairment. **Sauve** is designed to open in under 300 ms, skip all non-essential menus, and provide step-by-step hands-free voice and haptic feedback.
 
-**[Sauve website](https://relthdrarxash.github.io/sauve/)** · **[Download the preview build (APK)](https://github.com/Relthdrarxash/sauve/releases/tag/dev)**
+**[Sauve website](https://pilmil-studio.github.io/sauve/)** · **[Download the preview build (APK)](https://github.com/Pilmil-Studio/sauve/releases/tag/dev)**
 
 ---
 
@@ -48,10 +48,10 @@ It is not on the App Store yet. Every CI run (the "iOS" workflow) builds the app
 
 ## The Pilmil Studio Suite
 
-- **[Respire](https://github.com/Relthdrarxash/respire):** Screen-time pauses & calm disconnection without tracking
-- **[Lunaison](https://github.com/Relthdrarxash/lunaison):** Intimate menstrual cycle tracker 100% offline
-- **[Sommelle](https://github.com/Relthdrarxash/sommelle):** Sleep log & consistency without ads or account
-- **[Sauve](https://github.com/Relthdrarxash/sauve):** Anti-panic first aid 100% offline
+- **[Respire](https://github.com/Pilmil-Studio/respire):** Screen-time pauses & calm disconnection without tracking
+- **[Lunaison](https://github.com/Pilmil-Studio/lunaison):** Intimate menstrual cycle tracker 100% offline
+- **[Sommelle](https://github.com/Pilmil-Studio/sommelle):** Sleep log & consistency without ads or account
+- **[Sauve](https://github.com/Pilmil-Studio/sauve):** Anti-panic first aid 100% offline
 
 ## License
 
