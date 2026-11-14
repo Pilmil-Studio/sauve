@@ -156,6 +156,9 @@ fun AboutScreen(
                 onOpen = { openPlayStore("fr.sommelle") },
             )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+        PilmilLegalCard()
     }
 }
 
