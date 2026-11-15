@@ -63,6 +63,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.sauve.app.data.VictimProfile
+import fr.sauve.app.engine.shouldSpeakCount
 import fr.sauve.app.platform.Metronome
 import fr.sauve.app.platform.Speech
 import fr.sauve.app.ui.theme.EmergencyGreen
@@ -142,7 +143,7 @@ fun CardiacScreen(
                     speechEngine.speak(tr("2 insufflations : tête en arrière, nez pincé. Sinon, continuez à masser.", "2 rescue breaths: head back, pinch the nose. Otherwise keep compressing."))
                 } else if (!isContinuousMode && count % 30 == 1) {
                     speechEngine.speak(tr("Reprenez le massage", "Resume compressions"))
-                } else if (count % 10 == 0 && count % 30 != 0) {
+                } else if (shouldSpeakCount(count, isContinuousMode)) {
                     speechEngine.speak("$count")
                 }
 
