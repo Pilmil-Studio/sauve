@@ -2,7 +2,7 @@ package fr.sauve.app.platform
 
 import androidx.compose.runtime.staticCompositionLocalOf
 
-/** Métronome du massage cardiaque : cadence, vibration, phases d'insufflation. */
+/** Métronome du massage cardiaque : cadence, vibration, clic sonore, phases d'insufflation. */
 interface Metronome {
     fun start(
         bpm: Int = 110,
@@ -12,6 +12,9 @@ interface Metronome {
     )
 
     fun stop()
+
+    /** Clic sonore à chaque compression, en plus de la vibration ; activé par défaut. */
+    var beatSoundEnabled: Boolean
 
     /** Une vibration brève, pour confirmer un geste. */
     fun pulse()

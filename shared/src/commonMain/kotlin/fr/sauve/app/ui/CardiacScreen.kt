@@ -53,6 +53,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -84,6 +89,7 @@ fun CardiacScreen(
     var step by rememberSaveable { mutableStateOf(if (training) CardiacStep.CPR_ACTIVE else CardiacStep.CHECK_CONSCIOUSNESS) }
     var profile by rememberSaveable { mutableStateOf(VictimProfile.ADULT) }
     var isContinuousMode by rememberSaveable { mutableStateOf(true) } // Continu par défaut (recommandé grand public)
+    var beatSoundOn by rememberSaveable { mutableStateOf(true) }
     var showDaeDialog by remember { mutableStateOf(false) }
 
     var compressionCount by rememberSaveable { mutableIntStateOf(0) }
@@ -98,6 +104,9 @@ fun CardiacScreen(
             speechEngine.stop()
         }
     }
+
+    // Le métronome survit à l'écran : on lui redonne le choix de la session à chaque changement.
+    LaunchedEffect(beatSoundOn) { metronome.beatSoundEnabled = beatSoundOn }
 
     // Gestion du métronome
     fun toggleCpr() {
@@ -299,6 +308,8 @@ fun CardiacScreen(
                     metronome = metronome,
                     speechEngine = speechEngine,
                     isContinuousMode = isContinuousMode,
+                    beatSoundOn = beatSoundOn,
+                    onToggleBeatSound = { beatSoundOn = !beatSoundOn },
                     isRunning = isRunning,
                     compressionCount = compressionCount,
                     isBreathingPhase = isBreathingPhase,
@@ -322,6 +333,8 @@ private fun CprActiveScreen(
     metronome: Metronome,
     speechEngine: Speech,
     isContinuousMode: Boolean,
+    beatSoundOn: Boolean,
+    onToggleBeatSound: () -> Unit,
     isRunning: Boolean,
     compressionCount: Int,
     isBreathingPhase: Boolean,
@@ -482,6 +495,29 @@ private fun CprActiveScreen(
                         fontWeight = FontWeight.SemiBold,
                     )
                 }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Son du rythme : bascule large, état annoncé par TalkBack
+            val soundLabel = if (beatSoundOn) tr("Son du rythme activé", "Beat sound on") else tr("Son du rythme coupé", "Beat sound off")
+            OutlinedButton(
+                onClick = onToggleBeatSound,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp)
+                    .semantics {
+                        role = Role.Switch
+                        contentDescription = soundLabel
+                        stateDescription = if (beatSoundOn) tr("activé", "on") else tr("coupé", "off")
+                    },
+                shape = RoundedCornerShape(12.dp),
+            ) {
+                Text(
+                    tr("Son : ", "Sound: ") + if (beatSoundOn) tr("activé", "on") else tr("coupé", "off"),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold,
+                )
             }
         }
     }

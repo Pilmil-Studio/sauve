@@ -2,6 +2,7 @@
 
 package fr.sauve.app
 
+import fr.sauve.app.engine.BeatClickTone
 import fr.sauve.app.engine.CprMetronome
 import fr.sauve.app.i18n.isFrench
 import fr.sauve.app.i18n.tr
@@ -10,8 +11,11 @@ import fr.sauve.app.platform.ReviewReminderPort
 import fr.sauve.app.platform.SauvePlatform
 import fr.sauve.app.platform.Speech
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.addressOf
+import kotlinx.cinterop.usePinned
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
+import platform.AVFAudio.AVAudioPlayer
 import platform.AVFAudio.AVAudioSession
 import platform.AVFAudio.AVAudioSessionCategoryPlayback
 import platform.AVFAudio.AVSpeechBoundary
@@ -19,6 +23,8 @@ import platform.AVFAudio.AVSpeechSynthesisVoice
 import platform.AVFAudio.AVSpeechSynthesizer
 import platform.AVFAudio.AVSpeechUtterance
 import platform.Foundation.NSBundle
+import platform.Foundation.NSData
+import platform.Foundation.create
 import platform.Foundation.NSURL
 import platform.Foundation.NSUserDefaults
 import platform.UIKit.UIApplication
@@ -40,10 +46,12 @@ class IosSauvePlatform : SauvePlatform {
     private val haptic = UIImpactFeedbackGenerator(style = UIImpactFeedbackStyle.UIImpactFeedbackStyleHeavy)
     private val scope = MainScope()
 
+    private val beatClick = IosBeatClick()
+
     private val cpr = CprMetronome(scope, {
         haptic.prepare()
         haptic.impactOccurred()
-    })
+    }, click = beatClick::click)
 
     override val metronome: Metronome get() = cpr
     override val speech: Speech = IosSpeech()
@@ -69,7 +77,28 @@ class IosSauvePlatform : SauvePlatform {
     fun release() {
         cpr.stop()
         speech.stop()
+        beatClick.release()
         scope.cancel()
+    }
+}
+
+/** Clic du métronome : le son de [BeatClickTone] chargé une fois dans un lecteur, rejoué à chaque battement. */
+private class IosBeatClick {
+    private var player: AVAudioPlayer? = run {
+        val bytes = BeatClickTone.wav()
+        val data = bytes.usePinned { NSData.create(bytes = it.addressOf(0), length = bytes.size.toULong()) }
+        AVAudioPlayer(data = data, error = null)?.also { it.prepareToPlay() }
+    }
+
+    fun click() {
+        val p = player ?: return
+        p.currentTime = 0.0
+        p.play()
+    }
+
+    fun release() {
+        player?.stop()
+        player = null
     }
 }
 

@@ -10,7 +10,7 @@ import kotlin.time.TimeMark
 import kotlin.time.TimeSource
 
 /**
- * Cadence du massage cardiaque, commune à Android et iOS ; seule la vibration est propre au système.
+ * Cadence du massage cardiaque, commune à Android et iOS ; seuls la vibration et le clic sonore sont propres au système.
  *
  * Chaque battement est calé sur l'horloge depuis le départ, et non sur la fin du précédent :
  * la cadence ne dérive pas (à 110 bpm, 100 compressions prennent bien 54,5 s).
@@ -21,9 +21,12 @@ class CprMetronome(
     private val haptic: () -> Unit,
     private val clock: TimeSource = TimeSource.Monotonic,
     private val breathPauseMs: Long = 4_500L,
+    private val click: () -> Unit = {},
 ) : Metronome {
 
     private var job: Job? = null
+
+    override var beatSoundEnabled: Boolean = true
 
     val isRunning: Boolean get() = job?.isActive == true
 
@@ -42,6 +45,7 @@ class CprMetronome(
             while (isActive) {
                 count++
                 haptic()
+                if (beatSoundEnabled) click()
                 val elapsedSeconds = start.elapsedNow().inWholeSeconds
                 val breath = !continuous && count % cycleLength == 0
                 onTick(count, breath, elapsedSeconds)

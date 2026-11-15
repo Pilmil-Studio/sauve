@@ -17,6 +17,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import fr.sauve.app.engine.BeatClick
 import fr.sauve.app.engine.CprMetronome
 import fr.sauve.app.engine.HapticPulse
 import fr.sauve.app.engine.SpeechEngine
@@ -34,6 +35,7 @@ class MainActivity : ComponentActivity(), SauvePlatform {
     private val scope = MainScope()
     private lateinit var speechEngine: SpeechEngine
     private lateinit var cpr: CprMetronome
+    private lateinit var beatClick: BeatClick
 
     /** Écran demandé par un raccourci ou le widget alors que l'appli est déjà ouverte. */
     private var requestedScreen by mutableStateOf<Screen?>(null)
@@ -95,7 +97,8 @@ class MainActivity : ComponentActivity(), SauvePlatform {
         // Garde l'écran allumé pendant l'intervention d'urgence (indispensable sous panique)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        cpr = CprMetronome(scope, HapticPulse(this)::pulse)
+        beatClick = BeatClick()
+        cpr = CprMetronome(scope, HapticPulse(this)::pulse, click = beatClick::click)
         speechEngine = SpeechEngine(this)
         val initialScreen = (if (savedInstanceState == null) Screen.fromName(intent.getStringExtra(Screen.EXTRA)) else null) ?: Screen.HOME
 
@@ -124,6 +127,7 @@ class MainActivity : ComponentActivity(), SauvePlatform {
     override fun onDestroy() {
         super.onDestroy()
         cpr.stop()
+        beatClick.release()
         speechEngine.release()
         scope.cancel()
     }

@@ -26,6 +26,7 @@ class SauveNavigatorTest {
                 metronomeStops++
             }
 
+            override var beatSoundEnabled: Boolean = true
             override fun pulse() {}
         }
 
