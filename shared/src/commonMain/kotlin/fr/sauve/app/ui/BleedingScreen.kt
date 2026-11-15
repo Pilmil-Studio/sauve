@@ -99,7 +99,7 @@ fun BleedingScreen(
             }) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Hémorragie grave", "Severe bleeding"), color = EmergencyCrimsonText, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(tr("Hémorragie grave", "Severe bleeding"), color = EmergencyCrimsonText, fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.asHeading())
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -117,6 +117,7 @@ fun BleedingScreen(
                 Text(
                     tr("COMPRESSION DIRECTE", "DIRECT PRESSURE"),
                     style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.asHeading(),
                     fontWeight = FontWeight.Black,
                     color = EmergencyCrimsonText,
                 )

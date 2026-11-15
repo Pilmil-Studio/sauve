@@ -59,7 +59,7 @@ fun GuideScreen(
             TextButton(onClick = onBack) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Guide des gestes", "First-aid guide"), fontWeight = FontWeight.Bold, color = EmergencyGreenText, fontSize = 16.sp)
+            Text(tr("Guide des gestes", "First-aid guide"), fontWeight = FontWeight.Bold, color = EmergencyGreenText, fontSize = 16.sp, modifier = Modifier.asHeading())
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -67,6 +67,7 @@ fun GuideScreen(
         Text(
             tr("Fiches pratiques de révision", "Practical refresher sheets"),
             style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.asHeading(),
             fontWeight = FontWeight.Bold,
         )
         Text(
@@ -108,6 +109,7 @@ fun GuideScreen(
                             Text(
                                 topic.title,
                                 style = MaterialTheme.typography.titleMedium,
+                                modifier = Modifier.asHeading(),
                                 fontWeight = FontWeight.Bold,
                             )
                         }

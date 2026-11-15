@@ -109,7 +109,7 @@ fun RecoveryScreen(
             }) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Protéger & Surveiller", "Protect & monitor"), color = EmergencyBlueText, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(tr("Protéger & Surveiller", "Protect & monitor"), color = EmergencyBlueText, fontWeight = FontWeight.Bold, fontSize = 16.sp, modifier = Modifier.asHeading())
         }
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -165,6 +165,7 @@ fun RecoveryScreen(
                         Text(
                             tr("Position Latérale de Sécurité (PLS)", "Recovery position"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyBlueText,
                             textAlign = TextAlign.Center,
@@ -227,6 +228,7 @@ fun RecoveryScreen(
                         Text(
                             tr("Refroidir à l'eau : 10 à 20 minutes", "Cool with water: 10 to 20 minutes"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyBlueText,
                             textAlign = TextAlign.Center,
@@ -293,6 +295,7 @@ fun RecoveryScreen(
                         Text(
                             tr("Signes d'un AVC (Méthode FAST)", "Signs of a stroke (FAST)"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyBlueText,
                             textAlign = TextAlign.Center,

@@ -58,7 +58,7 @@ fun AboutScreen(
             TextButton(onClick = onBack) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("À propos", "About"), fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary, fontSize = 16.sp)
+            Text(tr("À propos", "About"), fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary, fontSize = 16.sp, modifier = Modifier.asHeading())
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -75,6 +75,7 @@ fun AboutScreen(
                 Text(
                     "Sauve",
                     style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.asHeading(),
                     fontWeight = FontWeight.Black,
                     color = EmergencyRedText,
                 )
@@ -128,6 +129,7 @@ fun AboutScreen(
             Text(
                 tr("La suite Pilmil Studio", "The Pilmil Studio suite"),
                 style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.asHeading(),
                 fontWeight = FontWeight.Bold,
             )
             Text(

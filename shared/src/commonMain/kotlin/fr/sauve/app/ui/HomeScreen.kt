@@ -86,6 +86,7 @@ fun HomeScreen(
                 Text(
                     text = "Sauve",
                     style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.asHeading(),
                     fontWeight = FontWeight.Black,
                     color = MaterialTheme.colorScheme.onBackground,
                 )

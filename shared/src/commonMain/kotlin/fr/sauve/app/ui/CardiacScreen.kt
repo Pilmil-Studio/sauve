@@ -264,6 +264,7 @@ fun CardiacScreen(
                         Text(
                             tr("Alerte Urgente", "Emergency call"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyRedText,
                         )
@@ -395,6 +396,7 @@ private fun CprActiveScreen(
                     fontWeight = FontWeight.Bold,
                     color = if (isBreathingPhase) EmergencyOrange else EmergencyRedText,
                     fontSize = 18.sp,
+                    modifier = Modifier.politeLiveRegion(),
                 )
                 Text(
                     text = tr("Durée : $timerStr", "Time: $timerStr"),
@@ -585,7 +587,7 @@ private fun EmergencyStepCard(
             modifier = Modifier.padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(title, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+            Text(title, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, modifier = Modifier.asHeading())
             Spacer(modifier = Modifier.height(12.dp))
             Text(
                 instruction,

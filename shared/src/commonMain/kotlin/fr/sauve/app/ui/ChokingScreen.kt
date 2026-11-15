@@ -147,6 +147,7 @@ fun ChokingScreen(
                         Text(
                             tr("Diagnostic Immédiat", "Immediate check"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyOrange,
                         )
@@ -203,6 +204,7 @@ fun ChokingScreen(
                         Text(
                             tr("Obstruction Partielle", "Partial obstruction"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyGreenText,
                         )
@@ -263,6 +265,7 @@ fun ChokingScreen(
                         Text(
                             tr("Étape 1 : 5 Claques dans le dos", "Step 1: 5 back blows"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyOrange,
                         )
@@ -350,6 +353,7 @@ fun ChokingScreen(
                         Text(
                             tr("Étape 2 : $thrustName", "Step 2: $thrustName"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyOrange,
                             textAlign = TextAlign.Center,
@@ -437,6 +441,7 @@ fun ChokingScreen(
                         Text(
                             tr("Voies Aériennes Libérées", "Airway cleared"),
                             style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.asHeading(),
                             fontWeight = FontWeight.Bold,
                             color = EmergencyGreenText,
                         )
