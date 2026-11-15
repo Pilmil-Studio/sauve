@@ -6,7 +6,9 @@ import fr.sauve.app.platform.SauvePlatform
 import fr.sauve.app.platform.Speech
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class SauveNavigatorTest {
 
@@ -88,5 +90,37 @@ class SauveNavigatorTest {
         assertEquals(Screen.HOME, navigator.current)
         assertEquals(3, platform.metronomeStops)
         assertEquals(3, platform.speechStops)
+    }
+
+    @Test
+    fun confirmationOnlyWhenMassageRunningAndLeaving() {
+        assertTrue(shouldConfirmLeaving(Screen.CARDIAC, true, Screen.HOME))
+        assertTrue(shouldConfirmLeaving(Screen.TRAINING, true, Screen.HOME))
+        assertFalse(shouldConfirmLeaving(Screen.CARDIAC, false, Screen.HOME))
+        assertFalse(shouldConfirmLeaving(Screen.CHOKING, true, Screen.HOME))
+        assertFalse(shouldConfirmLeaving(Screen.CARDIAC, true, Screen.CARDIAC))
+    }
+
+    @Test
+    fun goDuringMassageWaitsForConfirmation() {
+        val platform = FakePlatform()
+        val navigator = SauveNavigator(Screen.CARDIAC)
+        navigator.massageRunning = true
+
+        navigator.go(Screen.HOME, platform)
+        assertEquals(Screen.CARDIAC, navigator.current)
+        assertEquals(Screen.HOME, navigator.pendingScreen)
+        assertEquals(0, platform.metronomeStops)
+
+        navigator.cancelPending()
+        assertNull(navigator.pendingScreen)
+        assertEquals(Screen.CARDIAC, navigator.current)
+
+        navigator.go(Screen.HOME, platform)
+        navigator.confirmPending(platform)
+        assertEquals(Screen.HOME, navigator.current)
+        assertNull(navigator.pendingScreen)
+        assertFalse(navigator.massageRunning)
+        assertEquals(1, platform.metronomeStops)
     }
 }

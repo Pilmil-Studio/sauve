@@ -6,7 +6,11 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -16,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import fr.sauve.app.data.EmergencyCategory
+import fr.sauve.app.i18n.tr
 import fr.sauve.app.platform.LocalSauvePlatform
 import fr.sauve.app.platform.SauvePlatform
 import fr.sauve.app.ui.AboutScreen
@@ -53,12 +58,43 @@ class SauveNavigator(initial: Screen) {
     var current by mutableStateOf(initial)
         private set
 
+    /** Vrai tant qu'un massage est en cours (métronome lancé) sur l'écran courant. */
+    var massageRunning by mutableStateOf(false)
+
+    /** Écran demandé pendant un massage : on attend la confirmation avant de quitter. */
+    var pendingScreen by mutableStateOf<Screen?>(null)
+        private set
+
     fun go(screen: Screen, platform: SauvePlatform) {
+        if (shouldConfirmLeaving(current, massageRunning, screen)) {
+            pendingScreen = screen
+            return
+        }
+        leave(screen, platform)
+    }
+
+    /** L'utilisateur confirme : le massage s'arrête et l'écran demandé s'ouvre. */
+    fun confirmPending(platform: SauvePlatform) {
+        val screen = pendingScreen ?: return
+        leave(screen, platform)
+    }
+
+    fun cancelPending() {
+        pendingScreen = null
+    }
+
+    private fun leave(screen: Screen, platform: SauvePlatform) {
         platform.metronome.stop()
         platform.speech.stop()
+        massageRunning = false
+        pendingScreen = null
         current = screen
     }
 }
+
+/** Quitter pendant un massage en cours demande confirmation ; ailleurs, jamais. */
+fun shouldConfirmLeaving(current: Screen, massageRunning: Boolean, target: Screen): Boolean =
+    massageRunning && (current == Screen.CARDIAC || current == Screen.TRAINING) && target != current
 
 @Composable
 fun rememberSauveNavigator(initial: Screen = Screen.HOME): SauveNavigator =
@@ -102,12 +138,14 @@ fun SauveApp(platform: SauvePlatform, navigator: SauveNavigator) {
                     Screen.CARDIAC -> CardiacScreen(
                         metronome = metronome,
                         speechEngine = speech,
+                        onRunningChange = { navigator.massageRunning = it },
                         onBack = { go(Screen.HOME) },
                         onNavigateToPls = { go(Screen.RECOVERY) },
                     )
                     Screen.TRAINING -> CardiacScreen(
                         metronome = metronome,
                         speechEngine = speech,
+                        onRunningChange = { navigator.massageRunning = it },
                         onBack = { go(Screen.HOME) },
                         onNavigateToPls = { go(Screen.RECOVERY) },
                         training = true,
@@ -129,6 +167,23 @@ fun SauveApp(platform: SauvePlatform, navigator: SauveNavigator) {
                     )
                     Screen.GUIDE -> GuideScreen(onBack = { go(Screen.HOME) })
                     Screen.ABOUT -> AboutScreen(onBack = { go(Screen.HOME) })
+                }
+                if (navigator.pendingScreen != null) {
+                    AlertDialog(
+                        onDismissRequest = { navigator.cancelPending() },
+                        title = { Text(tr("Arrêter le massage ?", "Stop the compressions?")) },
+                        text = { Text(tr("Le métronome et la voix seront coupés.", "The metronome and the voice will stop.")) },
+                        confirmButton = {
+                            Button(onClick = { navigator.cancelPending() }) {
+                                Text(tr("Continuer le massage", "Keep going"))
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = { navigator.confirmPending(platform) }) {
+                                Text(tr("Arrêter et quitter", "Stop and leave"))
+                            }
+                        },
+                    )
                 }
             }
         }

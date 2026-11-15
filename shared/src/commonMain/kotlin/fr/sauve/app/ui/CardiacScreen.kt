@@ -84,6 +84,8 @@ fun CardiacScreen(
     onNavigateToPls: () -> Unit,
     /** Mode entraînement : directement au massage, sans appel ni étapes de bilan. */
     training: Boolean = false,
+    /** Signale au navigateur qu'un massage est en cours, pour confirmer avant de quitter. */
+    onRunningChange: (Boolean) -> Unit = {},
 ) {
     val platform = LocalSauvePlatform.current
     var step by rememberSaveable { mutableStateOf(if (training) CardiacStep.CPR_ACTIVE else CardiacStep.CHECK_CONSCIOUSNESS) }
@@ -102,8 +104,11 @@ fun CardiacScreen(
         onDispose {
             metronome.stop()
             speechEngine.stop()
+            onRunningChange(false)
         }
     }
+
+    LaunchedEffect(isRunning) { onRunningChange(isRunning) }
 
     // Le métronome survit à l'écran : on lui redonne le choix de la session à chaque changement.
     LaunchedEffect(beatSoundOn) { metronome.beatSoundEnabled = beatSoundOn }
@@ -160,11 +165,8 @@ fun CardiacScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            TextButton(onClick = {
-                metronome.stop()
-                speechEngine.stop()
-                onBack()
-            }) {
+            // Le navigateur arrête métronome et voix, après confirmation si un massage est en cours.
+            TextButton(onClick = onBack) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
 
