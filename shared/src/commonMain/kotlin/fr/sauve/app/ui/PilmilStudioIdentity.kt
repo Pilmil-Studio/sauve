@@ -99,7 +99,7 @@ fun PilmilLegalCard(modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Bold,
                     )
                     Text(
-                        text = "Alfortville, France",
+                        text = "France",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -108,11 +108,11 @@ fun PilmilLegalCard(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = tr(
-                    "Éditeur : Pilmil Studio (Alfortville, France).\n" +
+                    "Éditeur : Pilmil Studio (France).\n" +
                         "Confidentialité : 100 % hors-ligne, aucune permission réseau, aucun traceur, aucun compte.\n" +
                         "Licence : logiciel libre sous licence MPL-2.0.\n" +
                         "Contact : pilmil.studio@proton.me · https://pilmil-studio.github.io",
-                    "Publisher: Pilmil Studio (Alfortville, France).\n" +
+                    "Publisher: Pilmil Studio (France).\n" +
                         "Privacy: 100% offline, no network permission, no trackers, no account.\n" +
                         "License: open-source software under MPL-2.0.\n" +
                         "Contact: pilmil.studio@proton.me · https://pilmil-studio.github.io",
