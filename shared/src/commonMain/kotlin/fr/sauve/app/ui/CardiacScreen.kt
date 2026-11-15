@@ -66,9 +66,14 @@ import fr.sauve.app.data.VictimProfile
 import fr.sauve.app.engine.shouldSpeakCount
 import fr.sauve.app.platform.Metronome
 import fr.sauve.app.platform.Speech
+import fr.sauve.app.ui.theme.EmergencyRedDark
+import fr.sauve.app.ui.theme.EmergencyGreenDark
 import fr.sauve.app.ui.theme.EmergencyGreen
+import fr.sauve.app.ui.theme.EmergencyGreenText
 import fr.sauve.app.ui.theme.EmergencyOrange
 import fr.sauve.app.ui.theme.EmergencyRed
+import fr.sauve.app.ui.theme.EmergencyRedText
+import fr.sauve.app.ui.theme.OnEmergencyOrange
 
 enum class CardiacStep {
     CHECK_CONSCIOUSNESS,
@@ -184,7 +189,7 @@ fun CardiacScreen(
                         onClick = { profile = p },
                         label = { Text(p.label, fontSize = 12.sp) },
                         colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = EmergencyRed,
+                            selectedContainerColor = EmergencyRedDark,
                             selectedLabelColor = Color.White,
                         ),
                     )
@@ -219,7 +224,7 @@ fun CardiacScreen(
                     title = tr("1. Conscience de la victime", "1. Is the person responsive?"),
                     instruction = tr("Secouez doucement les épaules et demandez fort : « M'entendez-vous ? Serrez-moi la main ! »", "Gently shake the shoulders and ask loudly: “Can you hear me? Squeeze my hand!”"),
                     primaryActionLabel = tr("Ne réagit pas (Inconscient)", "No response (unconscious)"),
-                    primaryActionColor = EmergencyRed,
+                    primaryActionColor = EmergencyRedDark,
                     onPrimaryAction = { step = CardiacStep.CHECK_BREATHING },
                     secondaryActionLabel = tr("Réagit / Parle", "Responds / talks"),
                     onSecondaryAction = { onNavigateToPls() },
@@ -235,7 +240,7 @@ fun CardiacScreen(
                     instruction = tr("Basculez prudemment la tête en arrière pour ouvrir les voies respiratoires. Regardez et écoutez : la poitrine se soulève-t-elle normalement ?", "Gently tilt the head back to open the airway. Look and listen: does the chest rise normally?"),
                     hint = tr("Attention : un râle bruyant ou gasps n'est PAS une respiration normale.", "Warning: noisy gasping is NOT normal breathing."),
                     primaryActionLabel = tr("Ne respire pas / Respiration anormale", "Not breathing / abnormal breathing"),
-                    primaryActionColor = EmergencyRed,
+                    primaryActionColor = EmergencyRedDark,
                     onPrimaryAction = { step = CardiacStep.CALL_ALERT },
                     secondaryActionLabel = tr("Respire normalement", "Breathing normally"),
                     onSecondaryAction = { onNavigateToPls() },
@@ -259,7 +264,7 @@ fun CardiacScreen(
                             tr("Alerte Urgente", "Emergency call"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyRed,
+                            color = EmergencyRedText,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Text(
@@ -284,7 +289,7 @@ fun CardiacScreen(
                             onClick = {
                                 platform.dial("15")
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyRed),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyRedDark, contentColor = Color.White),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(56.dp),
@@ -387,7 +392,7 @@ private fun CprActiveScreen(
                 Text(
                     text = if (isBreathingPhase) tr("INSUFFLATIONS", "RESCUE BREATHS") else "110 BPM",
                     fontWeight = FontWeight.Bold,
-                    color = if (isBreathingPhase) EmergencyOrange else EmergencyRed,
+                    color = if (isBreathingPhase) EmergencyOrange else EmergencyRedText,
                     fontSize = 18.sp,
                 )
                 Text(
@@ -406,7 +411,7 @@ private fun CprActiveScreen(
                     .size(190.dp)
                     .scale(scale.value)
                     .background(
-                        color = if (isBreathingPhase) EmergencyOrange else if (isRunning) EmergencyRed else MaterialTheme.colorScheme.surface,
+                        color = if (isBreathingPhase) EmergencyOrange else if (isRunning) EmergencyRedDark else MaterialTheme.colorScheme.surface,
                         shape = CircleShape,
                     )
                     .border(4.dp, Color.White.copy(alpha = 0.7f), CircleShape),
@@ -414,8 +419,8 @@ private fun CprActiveScreen(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     if (isBreathingPhase) {
-                        Text("2", fontSize = 48.sp, fontWeight = FontWeight.Black, color = Color.White)
-                        Text(tr("Insufflations", "Rescue breaths"), fontSize = 14.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
+                        Text("2", fontSize = 48.sp, fontWeight = FontWeight.Black, color = OnEmergencyOrange)
+                        Text(tr("Insufflations", "Rescue breaths"), fontSize = 14.sp, color = OnEmergencyOrange, fontWeight = FontWeight.SemiBold)
                     } else {
                         Text(
                             text = if (isContinuousMode) compressionCount.toString() else "${(compressionCount - 1) % 30 + 1}",
@@ -427,7 +432,7 @@ private fun CprActiveScreen(
                         Text(
                             text = if (!isContinuousMode) tr("sur 30", "of 30") else tr("compressions", "compressions"),
                             fontSize = 13.sp,
-                            color = if (isRunning) Color.White.copy(alpha = 0.9f) else MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = if (isRunning) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
                 }
@@ -462,7 +467,7 @@ private fun CprActiveScreen(
             Button(
                 onClick = onToggleCpr,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = if (isRunning) MaterialTheme.colorScheme.surface else EmergencyRed,
+                    containerColor = if (isRunning) MaterialTheme.colorScheme.surface else EmergencyRedDark,
                     contentColor = if (isRunning) MaterialTheme.colorScheme.onSurface else Color.White,
                 ),
                 shape = RoundedCornerShape(16.dp),
@@ -492,7 +497,7 @@ private fun CprActiveScreen(
                         .height(48.dp),
                     shape = RoundedCornerShape(12.dp),
                 ) {
-                    Text(tr("DAE disponible", "AED available"), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = EmergencyGreen)
+                    Text(tr("DAE disponible", "AED available"), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = EmergencyGreenText)
                 }
                 OutlinedButton(
                     onClick = onToggleMode,
@@ -627,7 +632,7 @@ private fun DaeGuideDialog(onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(tr("Consignes Défibrillateur (DAE)", "Defibrillator (AED) instructions"), fontWeight = FontWeight.Bold, color = EmergencyGreen)
+            Text(tr("Consignes Défibrillateur (DAE)", "Defibrillator (AED) instructions"), fontWeight = FontWeight.Bold, color = EmergencyGreenText)
         },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -639,7 +644,7 @@ private fun DaeGuideDialog(onDismiss: () -> Unit) {
             }
         },
         confirmButton = {
-            Button(onClick = onDismiss, colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreen)) {
+            Button(onClick = onDismiss, colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreenDark, contentColor = Color.White)) {
                 Text(tr("J'ai compris", "Got it"))
             }
         },

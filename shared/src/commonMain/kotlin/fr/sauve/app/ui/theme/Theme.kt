@@ -15,6 +15,9 @@ val DarkBorder = Color(0xFF2E3642)
 val LightText = Color(0xFFF2F4F7)
 val MutedText = Color(0xFF98A2B3)
 
+/** Contour des boutons et des cartes : 3:1 au moins sur les trois fonds sombres. */
+val DarkOutline = Color(0xFF6B7788)
+
 // Couleurs thématiques des 4 urgences vitales
 val EmergencyRed = Color(0xFFE53935)
 val EmergencyRedDark = Color(0xFFB71C1C)
@@ -25,16 +28,27 @@ val EmergencyCrimsonDark = Color(0xFF880E4F)
 val EmergencyBlue = Color(0xFF1976D2)
 val EmergencyBlueDark = Color(0xFF0D47A1)
 val EmergencyGreen = Color(0xFF388E3C)
+val EmergencyGreenDark = Color(0xFF2E7D32)
 
-private val DarkColors = darkColorScheme(
-    primary = EmergencyRed,
-    onPrimary = Color.White,
+// Variantes claires pour le texte coloré sur fond sombre (4,5:1 au moins sur les trois fonds).
+val EmergencyRedText = Color(0xFFFF6B66)
+val EmergencyCrimsonText = Color(0xFFF06292)
+val EmergencyBlueText = Color(0xFF64B5F6)
+val EmergencyGreenText = Color(0xFF66BB6A)
+
+/** Texte sur fond orange : le blanc n'y atteint que 2,7:1, le noir 7,8:1. */
+val OnEmergencyOrange = Color.Black
+
+internal val DarkColors = darkColorScheme(
+    // « primary » sert aussi de couleur de texte (boutons à contour) : variante claire, texte noir dessus.
+    primary = EmergencyRedText,
+    onPrimary = Color.Black,
     primaryContainer = EmergencyRedDark,
     onPrimaryContainer = Color.White,
     secondary = EmergencyOrange,
-    onSecondary = Color.White,
+    onSecondary = OnEmergencyOrange,
     secondaryContainer = EmergencyOrangeDark,
-    onSecondaryContainer = Color.White,
+    onSecondaryContainer = OnEmergencyOrange,
     tertiary = EmergencyBlue,
     onTertiary = Color.White,
     background = DarkGround,
@@ -43,7 +57,7 @@ private val DarkColors = darkColorScheme(
     onSurface = LightText,
     surfaceVariant = DarkSurfaceVariant,
     onSurfaceVariant = MutedText,
-    outline = DarkBorder,
+    outline = DarkOutline,
 )
 
 private val LightColors = lightColorScheme(

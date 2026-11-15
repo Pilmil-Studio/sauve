@@ -44,7 +44,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.sauve.app.platform.Metronome
 import fr.sauve.app.platform.Speech
+import fr.sauve.app.ui.theme.EmergencyRedDark
 import fr.sauve.app.ui.theme.EmergencyBlue
+import fr.sauve.app.ui.theme.EmergencyBlueText
 import fr.sauve.app.ui.theme.EmergencyGreen
 import fr.sauve.app.ui.theme.EmergencyOrange
 import fr.sauve.app.ui.theme.EmergencyRed
@@ -106,7 +108,7 @@ fun RecoveryScreen(
             }) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Protéger & Surveiller", "Protect & monitor"), color = EmergencyBlue, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(tr("Protéger & Surveiller", "Protect & monitor"), color = EmergencyBlueText, fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -163,7 +165,7 @@ fun RecoveryScreen(
                             tr("Position Latérale de Sécurité (PLS)", "Recovery position"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyBlue,
+                            color = EmergencyBlueText,
                             textAlign = TextAlign.Center,
                         )
                         Spacer(modifier = Modifier.height(14.dp))
@@ -194,7 +196,7 @@ fun RecoveryScreen(
                             onClick = {
                                 platform.dial("15")
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyBlue),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyBlue, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -225,7 +227,7 @@ fun RecoveryScreen(
                             tr("Refroidir à l'eau : 10 à 20 minutes", "Cool with water: 10 to 20 minutes"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyBlue,
+                            color = EmergencyBlueText,
                             textAlign = TextAlign.Center,
                         )
                         Spacer(modifier = Modifier.height(10.dp))
@@ -242,13 +244,13 @@ fun RecoveryScreen(
                             timerStr,
                             fontSize = 50.sp,
                             fontWeight = FontWeight.Black,
-                            color = if (isBurnTimerRunning) EmergencyBlue else MaterialTheme.colorScheme.onSurface,
+                            color = if (isBurnTimerRunning) EmergencyBlueText else MaterialTheme.colorScheme.onSurface,
                         )
                         Spacer(modifier = Modifier.height(14.dp))
 
                         Button(
                             onClick = { isBurnTimerRunning = !isBurnTimerRunning },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyBlue),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyBlue, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -291,7 +293,7 @@ fun RecoveryScreen(
                             tr("Signes d'un AVC (Méthode FAST)", "Signs of a stroke (FAST)"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyBlue,
+                            color = EmergencyBlueText,
                             textAlign = TextAlign.Center,
                         )
                         Spacer(modifier = Modifier.height(14.dp))
@@ -307,7 +309,7 @@ fun RecoveryScreen(
                             onClick = {
                                 platform.dial("15")
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyRed),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyRedDark, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -331,7 +333,7 @@ private fun PlsStepItem(title: String, desc: String) {
             .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(10.dp))
             .padding(12.dp),
     ) {
-        Text(title, fontWeight = FontWeight.Bold, color = EmergencyBlue, fontSize = 15.sp)
+        Text(title, fontWeight = FontWeight.Bold, color = EmergencyBlueText, fontSize = 15.sp)
         Spacer(modifier = Modifier.height(4.dp))
         Text(desc, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
     }

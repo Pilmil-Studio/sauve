@@ -45,9 +45,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.sauve.app.data.EmergencyCategory
 import fr.sauve.app.ui.theme.EmergencyBlue
-import fr.sauve.app.ui.theme.EmergencyCrimson
+import fr.sauve.app.ui.theme.EmergencyCrimsonDark
 import fr.sauve.app.ui.theme.EmergencyOrange
 import fr.sauve.app.ui.theme.EmergencyRed
+import fr.sauve.app.ui.theme.EmergencyRedDark
+import fr.sauve.app.ui.theme.DarkBorder
+import fr.sauve.app.ui.theme.EmergencyBlueDark
+import fr.sauve.app.ui.theme.OnEmergencyOrange
 
 @Composable
 fun HomeScreen(
@@ -124,13 +128,14 @@ fun HomeScreen(
                 ) {
                     EmergencyCallButton(
                         label = tr("15 SAMU", "15 Medical"),
-                        color = EmergencyRed,
+                        color = EmergencyRedDark,
                         modifier = Modifier.weight(1f),
                         onClick = { callNumber("15") },
                     )
                     EmergencyCallButton(
                         label = tr("18 Pompiers", "18 Fire"),
                         color = EmergencyOrange,
+                        contentColor = OnEmergencyOrange,
                         modifier = Modifier.weight(1f),
                         onClick = { callNumber("18") },
                     )
@@ -142,7 +147,7 @@ fun HomeScreen(
                     )
                     EmergencyCallButton(
                         label = tr("114 SMS", "114 SMS"),
-                        color = MaterialTheme.colorScheme.outline,
+                        color = DarkBorder,
                         modifier = Modifier.weight(0.9f),
                         onClick = { sendSms("114") },
                     )
@@ -165,8 +170,7 @@ fun HomeScreen(
         // 4 GROS BOUTONS D'URGENCE VITALE (ANTI-PANIQUE)
         EmergencyHeroButton(
             category = EmergencyCategory.CARDIAC_ARREST,
-            badge = "110 BPM",
-            backgroundColor = EmergencyRed,
+            backgroundColor = EmergencyRedDark,
             onClick = { onSelectCategory(EmergencyCategory.CARDIAC_ARREST) },
         )
 
@@ -174,8 +178,8 @@ fun HomeScreen(
 
         EmergencyHeroButton(
             category = EmergencyCategory.CHOKING,
-            badge = tr("CLAQUES / HEIMLICH", "BLOWS / HEIMLICH"),
             backgroundColor = EmergencyOrange,
+            contentColor = OnEmergencyOrange,
             onClick = { onSelectCategory(EmergencyCategory.CHOKING) },
         )
 
@@ -183,8 +187,7 @@ fun HomeScreen(
 
         EmergencyHeroButton(
             category = EmergencyCategory.BLEEDING,
-            badge = tr("COMPRESSION CONTINUE", "CONSTANT PRESSURE"),
-            backgroundColor = EmergencyCrimson,
+            backgroundColor = EmergencyCrimsonDark,
             onClick = { onSelectCategory(EmergencyCategory.BLEEDING) },
         )
 
@@ -192,8 +195,7 @@ fun HomeScreen(
 
         EmergencyHeroButton(
             category = EmergencyCategory.RECOVERY_AND_BURNS,
-            badge = tr("PLS · EAU 10-20 MIN", "RECOVERY · WATER 10-20 MIN"),
-            backgroundColor = EmergencyBlue,
+            backgroundColor = EmergencyBlueDark,
             onClick = { onSelectCategory(EmergencyCategory.RECOVERY_AND_BURNS) },
         )
 
@@ -258,11 +260,12 @@ private fun EmergencyCallButton(
     label: String,
     color: Color,
     modifier: Modifier = Modifier,
+    contentColor: Color = Color.White,
     onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(containerColor = color),
+        colors = ButtonDefaults.buttonColors(containerColor = color, contentColor = contentColor),
         shape = RoundedCornerShape(10.dp),
         // 56 dp et texte sur deux lignes : cible facile à toucher sous le stress, libellé jamais coupé.
         modifier = modifier.heightIn(min = 56.dp),
@@ -273,7 +276,7 @@ private fun EmergencyCallButton(
             fontSize = 13.sp,
             lineHeight = 15.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.White,
+            color = contentColor,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             maxLines = 2,
         )
@@ -283,9 +286,9 @@ private fun EmergencyCallButton(
 @Composable
 private fun EmergencyHeroButton(
     category: EmergencyCategory,
-    badge: String,
     backgroundColor: Color,
     onClick: () -> Unit,
+    contentColor: Color = Color.White,
 ) {
     Surface(
         onClick = onClick,
@@ -293,12 +296,12 @@ private fun EmergencyHeroButton(
         color = backgroundColor,
         modifier = Modifier
             .fillMaxWidth()
-            .height(108.dp),
+            .heightIn(min = 108.dp),
         shadowElevation = 4.dp,
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(horizontal = 18.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -307,37 +310,23 @@ private fun EmergencyHeroButton(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.Center,
             ) {
-                Box(
-                    modifier = Modifier
-                        .background(Color.White.copy(alpha = 0.22f), RoundedCornerShape(6.dp))
-                        .padding(horizontal = 8.dp, vertical = 2.dp),
-                ) {
-                    Text(
-                        badge,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Black,
-                        color = Color.White,
-                        letterSpacing = 0.8.sp,
-                    )
-                }
-                Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     category.title,
                     fontSize = 21.sp,
                     fontWeight = FontWeight.Black,
-                    color = Color.White,
+                    color = contentColor,
                     lineHeight = 24.sp,
                 )
                 Text(
                     category.subtitle,
                     fontSize = 13.sp,
-                    color = Color.White.copy(alpha = 0.9f),
+                    color = contentColor,
                 )
             }
 
             Box(
                 modifier = Modifier
-                    .background(Color.White.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
+                    .background(contentColor.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
                     .padding(horizontal = 14.dp, vertical = 8.dp),
                 contentAlignment = Alignment.Center,
             ) {
@@ -345,7 +334,7 @@ private fun EmergencyHeroButton(
                     "${category.actionVerb} →",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White,
+                    color = contentColor,
                 )
             }
         }

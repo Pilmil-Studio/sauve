@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.sauve.app.platform.Speech
 import fr.sauve.app.ui.theme.EmergencyCrimson
+import fr.sauve.app.ui.theme.EmergencyCrimsonText
 import fr.sauve.app.ui.theme.EmergencyGreen
 import fr.sauve.app.ui.theme.EmergencyOrange
 import kotlinx.coroutines.delay
@@ -97,7 +98,7 @@ fun BleedingScreen(
             }) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Hémorragie grave", "Severe bleeding"), color = EmergencyCrimson, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(tr("Hémorragie grave", "Severe bleeding"), color = EmergencyCrimsonText, fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -106,7 +107,7 @@ fun BleedingScreen(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-            border = BorderStroke(2.dp, EmergencyCrimson),
+            border = BorderStroke(2.dp, EmergencyCrimsonText),
         ) {
             Column(
                 modifier = Modifier.padding(20.dp),
@@ -116,7 +117,7 @@ fun BleedingScreen(
                     tr("COMPRESSION DIRECTE", "DIRECT PRESSURE"),
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Black,
-                    color = EmergencyCrimson,
+                    color = EmergencyCrimsonText,
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
@@ -166,7 +167,7 @@ fun BleedingScreen(
                     onClick = {
                         platform.dial("15")
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = EmergencyCrimson),
+                    colors = ButtonDefaults.buttonColors(containerColor = EmergencyCrimson, contentColor = Color.White),
                     shape = RoundedCornerShape(14.dp),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -244,7 +245,7 @@ fun BleedingScreen(
         if (showTourniquetDialog) {
             AlertDialog(
                 onDismissRequest = { showTourniquetDialog = false },
-                title = { Text(tr("Poser un garrot d'urgence", "Emergency tourniquet"), fontWeight = FontWeight.Bold, color = EmergencyCrimson) },
+                title = { Text(tr("Poser un garrot d'urgence", "Emergency tourniquet"), fontWeight = FontWeight.Bold, color = EmergencyCrimsonText) },
                 text = {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(tr("Si la pression directe n'arrête pas le saignement d'un membre, ou si vous ne pouvez pas la maintenir : posez un garrot.", "If firm pressure does not stop bleeding from a limb, or you cannot keep it up, apply a tourniquet."))
@@ -262,7 +263,7 @@ fun BleedingScreen(
                             speechEngine.speak(tr("Garrot noté à $now. Ne le desserrez sous aucun prétexte.", "Tourniquet noted at $now. Do not loosen it under any circumstances."))
                             showTourniquetDialog = false
                         },
-                        colors = ButtonDefaults.buttonColors(containerColor = EmergencyCrimson),
+                        colors = ButtonDefaults.buttonColors(containerColor = EmergencyCrimson, contentColor = Color.White),
                     ) {
                         Text(tr("Enregistrer l'heure actuelle", "Save the current time"))
                     }

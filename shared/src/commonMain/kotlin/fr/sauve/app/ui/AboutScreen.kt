@@ -31,7 +31,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.sauve.app.ui.theme.EmergencyGreen
+import fr.sauve.app.ui.theme.EmergencyGreenText
 import fr.sauve.app.ui.theme.EmergencyRed
+import fr.sauve.app.ui.theme.EmergencyRedText
 
 @Composable
 fun AboutScreen(
@@ -74,7 +76,7 @@ fun AboutScreen(
                     "Sauve",
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Black,
-                    color = EmergencyRed,
+                    color = EmergencyRedText,
                 )
                 Text(
                     tr("Premiers secours anti-panique • Version ${platform.versionName}", "Anti-panic first aid • Version ${platform.versionName}"),
@@ -96,7 +98,7 @@ fun AboutScreen(
                         .padding(14.dp),
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                 ) {
-                    Text(tr("• Aucune connexion réseau : rien ne quitte le téléphone", "• No network connection: nothing leaves the phone"), fontWeight = FontWeight.Bold, color = EmergencyGreen, fontSize = 13.sp)
+                    Text(tr("• Aucune connexion réseau : rien ne quitte le téléphone", "• No network connection: nothing leaves the phone"), fontWeight = FontWeight.Bold, color = EmergencyGreenText, fontSize = 13.sp)
                     Text(tr("• Démarrage immédiat sans compte ni écran de veille", "• Starts instantly, no account, no splash screen"), fontSize = 13.sp)
                     Text(tr("• Métronome sonore et haptique à 110 bpm", "• Sound and haptic metronome at 110 bpm"), fontSize = 13.sp)
                     Text(tr("• Synthèse vocale pas-à-pas mains-libres", "• Hands-free, step-by-step voice guidance"), fontSize = 13.sp)

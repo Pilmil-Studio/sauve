@@ -43,7 +43,11 @@ import androidx.compose.ui.unit.sp
 import fr.sauve.app.data.VictimProfile
 import fr.sauve.app.platform.Metronome
 import fr.sauve.app.platform.Speech
+import fr.sauve.app.ui.theme.EmergencyRedDark
+import fr.sauve.app.ui.theme.EmergencyGreenDark
+import fr.sauve.app.ui.theme.OnEmergencyOrange
 import fr.sauve.app.ui.theme.EmergencyGreen
+import fr.sauve.app.ui.theme.EmergencyGreenText
 import fr.sauve.app.ui.theme.EmergencyOrange
 import fr.sauve.app.ui.theme.EmergencyRed
 
@@ -101,7 +105,7 @@ fun ChokingScreen(
                         label = { Text(p.label, fontSize = 12.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = EmergencyOrange,
-                            selectedLabelColor = Color.White,
+                            selectedLabelColor = OnEmergencyOrange,
                         ),
                     )
                 }
@@ -114,7 +118,7 @@ fun ChokingScreen(
         if (phase != ChokingPhase.DIAGNOSIS && phase != ChokingPhase.PARTIAL_OBSTRUCTION && phase != ChokingPhase.SUCCESS_RESOLVED) {
             Button(
                 onClick = onVictimUnconscious,
-                colors = ButtonDefaults.buttonColors(containerColor = EmergencyRed),
+                colors = ButtonDefaults.buttonColors(containerColor = EmergencyRedDark, contentColor = Color.White),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -159,7 +163,7 @@ fun ChokingScreen(
                                 currentActionCount = 1
                                 metronome.pulse()
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyOrange),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyOrange, contentColor = OnEmergencyOrange),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -199,7 +203,7 @@ fun ChokingScreen(
                             tr("Obstruction Partielle", "Partial obstruction"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyGreen,
+                            color = EmergencyGreenText,
                         )
                         Spacer(modifier = Modifier.height(14.dp))
                         Text(
@@ -212,13 +216,13 @@ fun ChokingScreen(
                             tr("Consigne : « Toussez fort ! Ne vous retenez pas ! »", "Say: “Cough hard! Don't hold back!”"),
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyGreen,
+                            color = EmergencyGreenText,
                             textAlign = TextAlign.Center,
                         )
                         Spacer(modifier = Modifier.height(24.dp))
                         Button(
                             onClick = { phase = ChokingPhase.SUCCESS_RESOLVED },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreen),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreenDark, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -300,7 +304,7 @@ fun ChokingScreen(
                                     phase = ChokingPhase.ABDOMINAL_THRUSTS
                                 }
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyOrange),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyOrange, contentColor = OnEmergencyOrange),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -315,7 +319,7 @@ fun ChokingScreen(
                         Spacer(modifier = Modifier.height(12.dp))
                         Button(
                             onClick = { phase = ChokingPhase.SUCCESS_RESOLVED },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreen),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreenDark, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -388,7 +392,7 @@ fun ChokingScreen(
                                     phase = ChokingPhase.BACK_BLOWS // Cycle alternatif
                                 }
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyOrange),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyOrange, contentColor = OnEmergencyOrange),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -403,7 +407,7 @@ fun ChokingScreen(
                         Spacer(modifier = Modifier.height(12.dp))
                         Button(
                             onClick = { phase = ChokingPhase.SUCCESS_RESOLVED },
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreen),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreenDark, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -433,7 +437,7 @@ fun ChokingScreen(
                             tr("Voies Aériennes Libérées", "Airway cleared"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
-                            color = EmergencyGreen,
+                            color = EmergencyGreenText,
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Text(
@@ -451,7 +455,7 @@ fun ChokingScreen(
                         Spacer(modifier = Modifier.height(24.dp))
                         Button(
                             onClick = onBack,
-                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreen),
+                            colors = ButtonDefaults.buttonColors(containerColor = EmergencyGreenDark, contentColor = Color.White),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()

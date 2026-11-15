@@ -33,8 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.sauve.app.data.FirstAidData
 import fr.sauve.app.ui.theme.EmergencyGreen
+import fr.sauve.app.ui.theme.EmergencyGreenText
 import fr.sauve.app.ui.theme.EmergencyOrange
 import fr.sauve.app.ui.theme.EmergencyRed
+import fr.sauve.app.ui.theme.EmergencyRedText
 
 @Composable
 fun GuideScreen(
@@ -57,7 +59,7 @@ fun GuideScreen(
             TextButton(onClick = onBack) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Guide des gestes", "First-aid guide"), fontWeight = FontWeight.Bold, color = EmergencyGreen, fontSize = 16.sp)
+            Text(tr("Guide des gestes", "First-aid guide"), fontWeight = FontWeight.Bold, color = EmergencyGreenText, fontSize = 16.sp)
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -128,7 +130,7 @@ fun GuideScreen(
                             Text(
                                 tr("Gestes clés :", "Key steps:"),
                                 fontWeight = FontWeight.Bold,
-                                color = EmergencyGreen,
+                                color = EmergencyGreenText,
                                 style = MaterialTheme.typography.titleSmall,
                             )
                             Spacer(modifier = Modifier.height(6.dp))
@@ -140,7 +142,7 @@ fun GuideScreen(
                             Text(
                                 tr("Erreurs à éviter :", "Mistakes to avoid:"),
                                 fontWeight = FontWeight.Bold,
-                                color = EmergencyRed,
+                                color = EmergencyRedText,
                                 style = MaterialTheme.typography.titleSmall,
                             )
                             Spacer(modifier = Modifier.height(6.dp))
