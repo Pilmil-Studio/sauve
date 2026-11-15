@@ -16,6 +16,9 @@ jobs:
         with:
           submodules: true
 
+      - name: Vérifier le wrapper Gradle
+        uses: gradle/actions/wrapper-validation@v4
+
       - name: Choisir Xcode 16
         run: |
           ls -d /Applications/Xcode*.app
