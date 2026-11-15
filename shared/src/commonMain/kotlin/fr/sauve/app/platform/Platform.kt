@@ -22,6 +22,9 @@ interface Metronome {
 
 /** Guidage vocal hors-ligne. */
 interface Speech {
+    /** Voix coupée : [speak] ne dit plus rien ; activée par défaut. */
+    var isVoiceEnabled: Boolean
+
     fun speak(text: String, flush: Boolean = true)
     fun stop()
 }

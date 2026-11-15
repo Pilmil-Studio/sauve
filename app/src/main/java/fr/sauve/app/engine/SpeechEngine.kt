@@ -19,7 +19,7 @@ class SpeechEngine(context: Context) : TextToSpeech.OnInitListener, Speech {
     private var isInitialized: Boolean = false
     private val voiceLocale: Locale = if (isFrench()) Locale.FRENCH else Locale.ENGLISH
 
-    var isVoiceEnabled: Boolean = true
+    override var isVoiceEnabled: Boolean = true
 
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {

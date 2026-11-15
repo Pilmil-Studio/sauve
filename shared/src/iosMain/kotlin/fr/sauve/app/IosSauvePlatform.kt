@@ -111,7 +111,10 @@ private class IosSpeech : Speech {
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, null)
     }
 
+    override var isVoiceEnabled: Boolean = true
+
     override fun speak(text: String, flush: Boolean) {
+        if (!isVoiceEnabled) return
         if (flush) synthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
         val utterance = AVSpeechUtterance(string = text)
         utterance.voice = AVSpeechSynthesisVoice.voiceWithLanguage(if (isFrench()) "fr-FR" else "en-US")

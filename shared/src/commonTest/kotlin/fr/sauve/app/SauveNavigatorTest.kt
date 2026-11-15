@@ -33,6 +33,7 @@ class SauveNavigatorTest {
         }
 
         override val speech: Speech = object : Speech {
+            override var isVoiceEnabled: Boolean = true
             override fun speak(text: String, flush: Boolean) {}
             override fun stop() {
                 speechStops++

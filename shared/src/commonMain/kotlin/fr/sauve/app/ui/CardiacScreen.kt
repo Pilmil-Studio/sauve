@@ -92,6 +92,7 @@ fun CardiacScreen(
     var profile by rememberSaveable { mutableStateOf(VictimProfile.ADULT) }
     var isContinuousMode by rememberSaveable { mutableStateOf(true) } // Continu par défaut (recommandé grand public)
     var beatSoundOn by rememberSaveable { mutableStateOf(true) }
+    var voiceOn by rememberSaveable { mutableStateOf(true) }
     var showDaeDialog by remember { mutableStateOf(false) }
 
     var compressionCount by rememberSaveable { mutableIntStateOf(0) }
@@ -112,6 +113,10 @@ fun CardiacScreen(
 
     // Le métronome survit à l'écran : on lui redonne le choix de la session à chaque changement.
     LaunchedEffect(beatSoundOn) { metronome.beatSoundEnabled = beatSoundOn }
+    LaunchedEffect(voiceOn) {
+        speechEngine.isVoiceEnabled = voiceOn
+        if (!voiceOn) speechEngine.stop()
+    }
 
     // Gestion du métronome
     fun toggleCpr() {
@@ -312,6 +317,8 @@ fun CardiacScreen(
                     isContinuousMode = isContinuousMode,
                     beatSoundOn = beatSoundOn,
                     onToggleBeatSound = { beatSoundOn = !beatSoundOn },
+                    voiceOn = voiceOn,
+                    onToggleVoice = { voiceOn = !voiceOn },
                     isRunning = isRunning,
                     compressionCount = compressionCount,
                     isBreathingPhase = isBreathingPhase,
@@ -337,6 +344,8 @@ private fun CprActiveScreen(
     isContinuousMode: Boolean,
     beatSoundOn: Boolean,
     onToggleBeatSound: () -> Unit,
+    voiceOn: Boolean,
+    onToggleVoice: () -> Unit,
     isRunning: Boolean,
     compressionCount: Int,
     isBreathingPhase: Boolean,
@@ -501,25 +510,49 @@ private fun CprActiveScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Son du rythme : bascule large, état annoncé par TalkBack
+            // Son du rythme et voix : bascules, état annoncé par TalkBack
             val soundLabel = if (beatSoundOn) tr("Son du rythme activé", "Beat sound on") else tr("Son du rythme coupé", "Beat sound off")
-            OutlinedButton(
-                onClick = onToggleBeatSound,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
-                    .semantics {
-                        role = Role.Switch
-                        contentDescription = soundLabel
-                        stateDescription = if (beatSoundOn) tr("activé", "on") else tr("coupé", "off")
-                    },
-                shape = RoundedCornerShape(12.dp),
+            val voiceLabel = if (voiceOn) tr("Voix activée", "Voice on") else tr("Voix coupée", "Voice off")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                Text(
-                    tr("Son : ", "Sound: ") + if (beatSoundOn) tr("activé", "on") else tr("coupé", "off"),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
+                OutlinedButton(
+                    onClick = onToggleBeatSound,
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(48.dp)
+                        .semantics {
+                            role = Role.Switch
+                            contentDescription = soundLabel
+                            stateDescription = if (beatSoundOn) tr("activé", "on") else tr("coupé", "off")
+                        },
+                    shape = RoundedCornerShape(12.dp),
+                ) {
+                    Text(
+                        tr("Son : ", "Sound: ") + if (beatSoundOn) tr("activé", "on") else tr("coupé", "off"),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+                OutlinedButton(
+                    onClick = onToggleVoice,
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(48.dp)
+                        .semantics {
+                            role = Role.Switch
+                            contentDescription = voiceLabel
+                            stateDescription = if (voiceOn) tr("activée", "on") else tr("coupée", "off")
+                        },
+                    shape = RoundedCornerShape(12.dp),
+                ) {
+                    Text(
+                        tr("Voix : ", "Voice: ") + if (voiceOn) tr("activée", "on") else tr("coupée", "off"),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
             }
         }
     }
