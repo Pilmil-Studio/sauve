@@ -171,30 +171,35 @@ fun CardiacScreen(
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        // En-tête de retour et sélecteur de profil
+        // En-tête de retour, puis sélecteur de profil sur toute la largeur (cibles de 48 dp, texte de 14 sp)
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             // Le navigateur arrête métronome et voix, après confirmation si un massage est en cours.
             TextButton(onClick = onBack) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
+        }
 
-            // Boutons profil
-            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                VictimProfile.entries.forEach { p ->
-                    FilterChip(
-                        selected = profile == p,
-                        onClick = { profile = p },
-                        label = { Text(p.label, fontSize = 12.sp) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = EmergencyRedDark,
-                            selectedLabelColor = Color.White,
-                        ),
-                    )
-                }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            VictimProfile.entries.forEach { p ->
+                FilterChip(
+                    selected = profile == p,
+                    onClick = { profile = p },
+                    label = { Text(p.label, fontSize = 14.sp, maxLines = 1) },
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = 48.dp),
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedContainerColor = EmergencyRedDark,
+                        selectedLabelColor = Color.White,
+                    ),
+                )
             }
         }
 
@@ -500,7 +505,7 @@ private fun CprActiveScreen(
                         .heightIn(min = 48.dp),
                     shape = RoundedCornerShape(12.dp),
                 ) {
-                    Text(tr("DAE disponible", "AED available"), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = EmergencyGreenText)
+                    Text(tr("DAE disponible", "AED available"), fontSize = 14.sp, fontWeight = FontWeight.Bold, color = EmergencyGreenText)
                 }
                 OutlinedButton(
                     onClick = onToggleMode,
@@ -511,7 +516,7 @@ private fun CprActiveScreen(
                 ) {
                     Text(
                         if (isContinuousMode) tr("Mode : Continu", "Mode: continuous") else tr("Mode : 30 : 2", "Mode: 30:2"),
-                        fontSize = 13.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                     )
                 }
@@ -540,7 +545,7 @@ private fun CprActiveScreen(
                 ) {
                     Text(
                         tr("Son : ", "Sound: ") + if (beatSoundOn) tr("activé", "on") else tr("coupé", "off"),
-                        fontSize = 13.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                     )
                 }
@@ -558,7 +563,7 @@ private fun CprActiveScreen(
                 ) {
                     Text(
                         tr("Voix : ", "Voice: ") + if (voiceOn) tr("activée", "on") else tr("coupée", "off"),
-                        fontSize = 13.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                     )
                 }

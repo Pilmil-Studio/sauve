@@ -88,7 +88,7 @@ fun ChokingScreen(
         // En-tête retour et profil
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             TextButton(onClick = {
@@ -97,19 +97,25 @@ fun ChokingScreen(
             }) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
+        }
 
-            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                VictimProfile.entries.forEach { p ->
-                    FilterChip(
-                        selected = profile == p,
-                        onClick = { profile = p },
-                        label = { Text(p.label, fontSize = 12.sp) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = EmergencyOrange,
-                            selectedLabelColor = OnEmergencyOrange,
-                        ),
-                    )
-                }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            VictimProfile.entries.forEach { p ->
+                FilterChip(
+                    selected = profile == p,
+                    onClick = { profile = p },
+                    label = { Text(p.label, fontSize = 14.sp, maxLines = 1) },
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = 48.dp),
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedContainerColor = EmergencyOrange,
+                        selectedLabelColor = OnEmergencyOrange,
+                    ),
+                )
             }
         }
 
