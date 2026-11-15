@@ -247,11 +247,11 @@ fun BleedingScreen(
                 title = { Text(tr("Poser un garrot d'urgence", "Emergency tourniquet"), fontWeight = FontWeight.Bold, color = EmergencyCrimson) },
                 text = {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(tr("Le garrot est réservé aux cas extrêmes (membre arraché, blessés multiples impossibles à comprimer manuellement).", "A tourniquet is only for extreme cases (severed limb, several casualties that cannot be compressed by hand)."))
-                        Text(tr("1. Placer un lien large (ceinture, écharpe) au-dessus de la plaie, entre la blessure et le cœur.", "1. Place a wide strap (belt, scarf) above the wound, between the injury and the heart."))
+                        Text(tr("Si la pression directe n'arrête pas le saignement d'un membre, ou si vous ne pouvez pas la maintenir : posez un garrot.", "If firm pressure does not stop bleeding from a limb, or you cannot keep it up, apply a tourniquet."))
+                        Text(tr("1. Placer un lien large (ceinture, écharpe) 5 à 7 cm au-dessus de la plaie, entre la blessure et le cœur, jamais sur une articulation.", "1. Place a wide strap (belt, scarf) 5 to 7 cm above the wound, between the injury and the heart, never over a joint."))
                         Text(tr("2. Serrer très fort jusqu'à arrêt complet du saignement.", "2. Tighten very hard until the bleeding stops completely."))
                         Text(tr("3. NE JAMAIS LE DESSERRER.", "3. NEVER LOOSEN IT."))
-                        Text(tr("4. Noter impérativement l'heure de pose.", "4. Always note the time it was applied."))
+                        Text(tr("4. Noter impérativement l'heure de pose. Laissez le garrot visible, ne le recouvrez pas.", "4. Always note the time it was applied. Leave the tourniquet visible, do not cover it."))
                     }
                 },
                 confirmButton = {

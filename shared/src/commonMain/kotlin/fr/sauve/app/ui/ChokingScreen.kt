@@ -263,7 +263,7 @@ fun ChokingScreen(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         if (profile == VictimProfile.INFANT) {
-                            GestureIllustration(Gestures.ChokingInfant, tr("Schéma : nourrisson à plat ventre le long de l'avant-bras du sauveteur, tête plus basse que le corps, mâchoire soutenue par la main, tapes entre les omoplates.", "Diagram: baby face down along the rescuer's forearm, head lower than the body, jaw supported by the hand, back blows between the shoulder blades."))
+                            GestureIllustration(Gestures.ChokingInfant, tr("Schéma : nourrisson à plat ventre le long de l'avant-bras du sauveteur, tête plus basse que le corps, mâchoire soutenue par la main, claques entre les omoplates.", "Diagram: baby face down along the rescuer's forearm, head lower than the body, jaw supported by the hand, back blows between the shoulder blades."))
                         } else {
                             GestureIllustration(Gestures.ChokingBackBlows, tr("Schéma : personne penchée en avant, soutenue au niveau de la poitrine par une main, l'autre main frappe entre les omoplates, flèche vers le bas.", "Diagram: person leaning forward, supported at the chest by one hand while the other hand strikes between the shoulder blades, arrow pointing down."))
                         }
@@ -272,7 +272,7 @@ fun ChokingScreen(
                             VictimProfile.ADULT, VictimProfile.CHILD ->
                                 tr("Penchez la victime en avant. Donnez une claque sèche avec le plat de la main entre les deux omoplates.", "Lean the person forward. Give a sharp blow with the flat of your hand between the shoulder blades.")
                             VictimProfile.INFANT ->
-                                tr("Placez le bébé à plat ventre sur votre avant-bras penché vers le bas. Donnez 5 tapes douces mais fermes entre ses omoplates.", "Lay the baby face down along your forearm, tilted downwards. Give 5 gentle but firm blows between the shoulder blades.")
+                                tr("Placez le bébé à plat ventre sur votre avant-bras penché vers le bas. Donnez jusqu'à 5 claques vigoureuses avec le talon de la main, entre ses omoplates. Arrêtez dès que l'objet sort.", "Lay the baby face down along your forearm, tilted downwards. Give up to 5 firm back blows with the heel of your hand, between the shoulder blades. Stop as soon as the object comes out.")
                         }
                         Text(
                             instruction,
@@ -361,7 +361,7 @@ fun ChokingScreen(
                             VictimProfile.ADULT, VictimProfile.CHILD ->
                                 tr("Placez votre poing au creux de l'estomac (au-dessus du nombril). Tirez d'un coup sec vers l'arrière et vers le haut.", "Place your fist just above the navel, below the ribs. Pull sharply inwards and upwards.")
                             VictimProfile.INFANT ->
-                                tr("Retournez le bébé sur le dos le long de votre avant-bras. Effectuez 5 compressions thoraciques avec 2 doigts sur le sternum (JAMAIS d'appui au ventre).", "Turn the baby onto their back along your forearm. Give 5 chest thrusts with 2 fingers on the breastbone (NEVER press on the belly).")
+                                tr("Retournez le bébé sur le dos le long de votre avant-bras. Effectuez jusqu'à 5 compressions thoraciques avec 2 doigts sur le sternum (JAMAIS d'appui au ventre). Arrêtez dès que l'objet sort.", "Turn the baby onto their back along your forearm. Give up to 5 chest thrusts with 2 fingers on the breastbone (NEVER press on the belly). Stop as soon as the object comes out.")
                         }
                         Text(
                             instruction,

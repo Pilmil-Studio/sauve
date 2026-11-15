@@ -117,7 +117,7 @@ fun CardiacScreen(
         } else {
             isRunning = true
             var lastRelayAlertIndex = 0L
-            speechEngine.speak(tr("Massez au centre de la poitrine au rythme des vibrations", "Push in the centre of the chest in time with the vibrations"))
+            speechEngine.speak(tr("Massez au centre de la poitrine au rythme du son et des vibrations", "Push in the centre of the chest in time with the sound and vibrations"))
             metronome.start(
                 bpm = 110,
                 cycleLength = 30,
@@ -129,7 +129,7 @@ fun CardiacScreen(
 
                 // Voix de guidage
                 if (breath) {
-                    speechEngine.speak(tr("2 insufflations !", "2 rescue breaths!"))
+                    speechEngine.speak(tr("2 insufflations : tête en arrière, nez pincé. Sinon, continuez à masser.", "2 rescue breaths: head back, pinch the nose. Otherwise keep compressing."))
                 } else if (!isContinuousMode && count % 30 == 1) {
                     speechEngine.speak(tr("Reprenez le massage", "Resume compressions"))
                 } else if (count % 10 == 0 && count % 30 != 0) {
@@ -193,7 +193,7 @@ fun CardiacScreen(
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 Text(
-                    tr("Entraînement : massez un coussin ou un ballon au rythme des vibrations. Visez 5 à 6 cm d'enfoncement, bras tendus. En cas de vraie urgence, revenez à l'accueil.", "Practice: compress a cushion or a ball in time with the vibrations. Aim for 5 to 6 cm deep, arms straight. In a real emergency, go back to the home screen."),
+                    tr("Entraînement : massez un coussin ou un ballon au rythme du son et des vibrations. Visez 5 à 6 cm d'enfoncement, bras tendus. En cas de vraie urgence, revenez à l'accueil.", "Practice: compress a cushion or a ball in time with the sound and vibrations. Aim for 5 to 6 cm deep, arms straight. In a real emergency, go back to the home screen."),
                     modifier = Modifier.padding(12.dp),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -426,13 +426,13 @@ private fun CprActiveScreen(
             // Consignes de posture selon le profil
             val postureText = when (profile) {
                 VictimProfile.ADULT -> tr("Bras tendus verticaux • Enfoncer de 5 à 6 cm • Relâcher complètement", "Arms straight and vertical • Push 5 to 6 cm • Release fully")
-                VictimProfile.CHILD -> tr("1 seule main au centre • Enfoncer de 4 à 5 cm • Relâcher", "One hand in the centre • Push 4 to 5 cm • Release")
-                VictimProfile.INFANT -> tr("2 doigts au centre • Enfoncer de 3 à 4 cm • Rythme doux", "Two fingers in the centre • Push 3 to 4 cm • Gentle rhythm")
+                VictimProfile.CHILD -> tr("1 seule main au centre • environ 5 cm (1/3 du thorax) • Relâcher\nSi vous savez le faire, commencez par 5 insufflations. Sinon, massez sans arrêt.", "One hand in the centre • about 5 cm (1/3 of chest depth) • Release\nIf you know how, start with 5 rescue breaths. Otherwise, keep compressing without stopping.")
+                VictimProfile.INFANT -> tr("2 doigts au centre du sternum • environ 4 cm (1/3 du thorax) • même rythme, relâcher complètement\nSi vous savez le faire, commencez par 5 insufflations. Sinon, massez sans arrêt.", "Two fingers on the breastbone • about 4 cm (1/3 of chest depth) • same rate, release fully\nIf you know how, start with 5 rescue breaths. Otherwise, keep compressing without stopping.")
             }
             val (gesture, gestureLabel) = when (profile) {
                 VictimProfile.ADULT -> Gestures.CprAdult to tr("Schéma : adulte allongé sur le dos, sauveteur à genoux, bras tendus à la verticale, deux mains superposées au centre de la poitrine, flèche vers le bas.", "Diagram: adult lying on their back, rescuer kneeling with straight vertical arms, both hands stacked in the centre of the chest, arrow pointing down.")
                 VictimProfile.CHILD -> Gestures.CprChild to tr("Schéma : enfant allongé sur le dos, une seule main au centre de la poitrine, flèche vers le bas.", "Diagram: child lying on their back, one hand in the centre of the chest, arrow pointing down.")
-                VictimProfile.INFANT -> Gestures.CprInfant to tr("Schéma : nourrisson vu du dessus, deux doigts au centre de la poitrine, juste sous la ligne des mamelons.", "Diagram: infant seen from above, two fingers in the centre of the chest just below the nipple line.")
+                VictimProfile.INFANT -> Gestures.CprInfant to tr("Schéma : nourrisson vu du dessus, deux doigts sur la moitié inférieure du sternum.", "Diagram: infant seen from above, two fingers on the lower half of the breastbone.")
             }
             GestureIllustration(gesture, gestureLabel)
             Spacer(modifier = Modifier.height(8.dp))
@@ -598,7 +598,8 @@ private fun DaeGuideDialog(onDismiss: () -> Unit) {
                 Text(tr("1. Allumez immédiatement l'appareil (bouton vert ou ouverture du capot).", "1. Switch the device on at once (green button or open the lid)."))
                 Text(tr("2. Écoutez ses consignes vocales : collez les électrodes sur la poitrine nue sèche selon les dessins.", "2. Follow its voice prompts: stick the pads on the bare, dry chest as shown in the pictures."))
                 Text(tr("3. Pendant l'analyse et la délivrance du choc : NE TOUCHEZ PAS la victime.", "3. During analysis and shock: DO NOT TOUCH the person."))
-                Text(tr("4. Reprenez le massage cardiaque immédiatement après le choc si le DAE le demande.", "4. Resume chest compressions right after the shock if the AED tells you to."))
+                Text(tr("4. Après le choc, reprenez le massage tout de suite, sans attendre. Suivez ensuite le DAE.", "4. After the shock, restart compressions straight away. Then follow the AED."))
+                        Text(tr("Enfant ou nourrisson : électrodes enfant si le DAE en a ; sinon, électrodes adulte, une sur le thorax et une dans le dos.", "Child or infant: use child pads if the AED has them; otherwise adult pads, one on the chest and one on the back."))
             }
         },
         confirmButton = {

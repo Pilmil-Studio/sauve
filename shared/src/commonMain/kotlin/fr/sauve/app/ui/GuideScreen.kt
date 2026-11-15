@@ -57,7 +57,7 @@ fun GuideScreen(
             TextButton(onClick = onBack) {
                 Text(tr("← Accueil", "← Home"), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
             }
-            Text(tr("Guide Réflexes PSC1", "First aid reflexes guide"), fontWeight = FontWeight.Bold, color = EmergencyGreen, fontSize = 16.sp)
+            Text(tr("Guide des gestes", "First-aid guide"), fontWeight = FontWeight.Bold, color = EmergencyGreen, fontSize = 16.sp)
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -68,7 +68,7 @@ fun GuideScreen(
             fontWeight = FontWeight.Bold,
         )
         Text(
-            tr("Consultez ces guides à tête reposée pour mémoriser les réflexes vitaux.", "Read these guides calmly, ahead of time, to memorise the life-saving reflexes."),
+            tr("Consultez ces guides à tête reposée pour mémoriser les réflexes vitaux. Inspiré des recommandations PSC. Ne remplace pas une formation.", "Read these guides calmly, ahead of time, to memorise the life-saving reflexes. Based on French PSC recommendations. Not a substitute for training."),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

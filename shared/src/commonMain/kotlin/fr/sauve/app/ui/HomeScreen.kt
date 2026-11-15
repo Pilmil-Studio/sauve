@@ -98,7 +98,7 @@ fun HomeScreen(
                 shape = RoundedCornerShape(10.dp),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
             ) {
-                Text(tr("Fiches PSC1", "First aid sheets"), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                Text(tr("Guide des gestes", "First-aid guide"), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
             }
         }
 
@@ -174,7 +174,7 @@ fun HomeScreen(
 
         EmergencyHeroButton(
             category = EmergencyCategory.CHOKING,
-            badge = tr("5 TAPES / HEIMLICH", "5 BLOWS / HEIMLICH"),
+            badge = tr("CLAQUES / HEIMLICH", "BLOWS / HEIMLICH"),
             backgroundColor = EmergencyOrange,
             onClick = { onSelectCategory(EmergencyCategory.CHOKING) },
         )
@@ -192,7 +192,7 @@ fun HomeScreen(
 
         EmergencyHeroButton(
             category = EmergencyCategory.RECOVERY_AND_BURNS,
-            badge = tr("PLS · 15 MIN EAU", "RECOVERY · 15 MIN WATER"),
+            badge = tr("PLS · EAU 10-20 MIN", "RECOVERY · WATER 10-20 MIN"),
             backgroundColor = EmergencyBlue,
             onClick = { onSelectCategory(EmergencyCategory.RECOVERY_AND_BURNS) },
         )

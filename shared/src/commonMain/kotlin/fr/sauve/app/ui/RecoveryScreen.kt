@@ -76,7 +76,7 @@ fun RecoveryScreen(
             if (burnSecondsRemaining == 0) {
                 isBurnTimerRunning = false
                 metronome.pulse()
-                speechEngine.speak(tr("Quinze minutes écoulées. Évaluez la douleur et protégez la brûlure avec un linge propre.", "Fifteen minutes gone. Check the pain and protect the burn with a clean cloth."))
+                speechEngine.speak(tr("Quinze minutes écoulées. Si la douleur persiste, continuez à arroser. Sinon, protégez la brûlure avec un linge propre.", "Fifteen minutes gone. If it still hurts, keep cooling. Otherwise, protect the burn with a clean cloth."))
             }
         }
     }
@@ -129,9 +129,9 @@ fun RecoveryScreen(
                 selected = topic == RecoverySubTopic.BURNS,
                 onClick = {
                     topic = RecoverySubTopic.BURNS
-                    speechEngine.speak(tr("Refroidissez la brûlure sous l'eau tempérée pendant quinze minutes.", "Cool the burn under lukewarm water for fifteen minutes."))
+                    speechEngine.speak(tr("Arrosez la brûlure à l'eau courante tempérée, dix minutes au moins, idéalement vingt.", "Cool the burn under lukewarm running water for at least ten minutes, ideally twenty."))
                 },
-                label = { Text(tr("Brûlures (15 min)", "Burns (15 min)"), fontSize = 12.sp) },
+                label = { Text(tr("Brûlures", "Burns"), fontSize = 12.sp) },
                 colors = FilterChipDefaults.filterChipColors(selectedContainerColor = EmergencyBlue, selectedLabelColor = Color.White),
             )
             FilterChip(
@@ -168,7 +168,7 @@ fun RecoveryScreen(
                         )
                         Spacer(modifier = Modifier.height(14.dp))
                         Text(
-                            tr("Pour toute personne inconsciente qui respire normalement. Évite l'étouffement par la langue ou les vomissements.", "For anyone unconscious who is breathing normally. Prevents choking on the tongue or on vomit."),
+                            tr("Pour toute personne inconsciente qui respire normalement, sans suspicion de traumatisme. Appelez le 15. Évite l'étouffement par la langue ou les vomissements.", "For anyone unconscious who is breathing normally, with no suspected injury. Call 15. Prevents choking on the tongue or on vomit."),
                             style = MaterialTheme.typography.bodyMedium,
                             textAlign = TextAlign.Center,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -185,8 +185,8 @@ fun RecoveryScreen(
                         // Étapes claires
                         PlsStepItem(tr("1. Bras en angle droit", "1. Arm at a right angle"), tr("Placez le bras le plus proche de vous à angle droit (90°) paume vers le haut.", "Place the arm nearest to you at a right angle (90°), palm up."))
                         PlsStepItem(tr("2. Main contre la joue", "2. Hand against the cheek"), tr("Amenez le dos de l'autre main contre l'oreille et la joue opposée de la victime.", "Bring the back of the other hand against the person's opposite ear and cheek."))
-                        PlsStepItem(tr("3. Pivoter le genou", "3. Roll at the knee"), tr("Saisissez la jambe opposée derrière le genou et tirez doucement pour faire rouler la victime vers vous.", "Take the far leg behind the knee and pull gently to roll the person towards you."))
-                        PlsStepItem(tr("4. Ouvrir la bouche", "4. Open the mouth"), tr("Ouvrez la bouche vers le sol et vérifiez la respiration en continu.", "Open the mouth facing the ground and keep checking their breathing."))
+                        PlsStepItem(tr("3. Pivoter le genou", "3. Roll at the knee"), tr("Saisissez la jambe opposée derrière le genou et tirez doucement pour faire rouler la victime vers vous. Laissez cette jambe fléchie à angle droit pour stabiliser.", "Take the far leg behind the knee and pull gently to roll the person towards you. Leave that leg bent at a right angle to keep them stable."))
+                        PlsStepItem(tr("4. Ouvrir la bouche", "4. Open the mouth"), tr("Ouvrez la bouche vers le sol, couvrez la personne et vérifiez la respiration en continu.", "Open the mouth facing the ground, cover the person and keep checking their breathing."))
 
                         Spacer(modifier = Modifier.height(24.dp))
 
@@ -222,7 +222,7 @@ fun RecoveryScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Text(
-                            tr("Règle des 15 : Refroidir à l'eau", "Rule of 15: cool with water"),
+                            tr("Refroidir à l'eau : 10 à 20 minutes", "Cool with water: 10 to 20 minutes"),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
                             color = EmergencyBlue,
@@ -230,7 +230,7 @@ fun RecoveryScreen(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            tr("Faites couler de l'eau tempérée (15 à 20°C) à 15 cm de distance sur la brûlure.", "Run lukewarm water (15 to 20°C) on the burn from 15 cm away."),
+                            tr("Arrosez à l'eau courante tempérée, à faible débit, 10 minutes au moins, idéalement 20. Continuez tant que la douleur persiste.", "Cool under lukewarm, gently running water for at least 10 minutes, ideally 20. Keep going while it still hurts."),
                             style = MaterialTheme.typography.bodyLarge,
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.SemiBold,
@@ -269,7 +269,8 @@ fun RecoveryScreen(
                             Text(tr("• Ne jamais mettre de glaçons (risque de gelure).", "• Never use ice (risk of frostbite)."), color = EmergencyOrange, fontWeight = FontWeight.Bold)
                             Text(tr("• Ne mettre ni beurre, ni huile, ni dentifrice.", "• No butter, oil or toothpaste."), color = EmergencyOrange, fontWeight = FontWeight.Bold)
                             Text(tr("• Ne percez jamais les cloques.", "• Never burst blisters."), color = EmergencyOrange, fontWeight = FontWeight.Bold)
-                            Text(tr("• Retirez bagues et montres avant que la zone ne gonfle.", "• Remove rings and watches before the area swells."))
+                            Text(tr("• Retirez bijoux et vêtements qui n'adhèrent pas à la peau, sans interrompre l'arrosage.", "• Remove jewellery and clothing that is not stuck to the skin, without stopping the cooling."))
+                                Text(tr("• Appelez le 15 si : cloque plus grande qu'une demi-paume, peau blanche ou noire, visage, cou, mains, articulations, brûlure chimique ou électrique, ou si la victime est un enfant.", "• Call 15 if: a blister bigger than half a palm, white or black skin, face, neck, hands, joints, chemical or electrical burn, or the person is a child."), fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -298,7 +299,7 @@ fun RecoveryScreen(
                         PlsStepItem(tr("F (Visage / Face)", "F (Face)"), tr("Demandez de sourire : un côté de la bouche retombe-t-il ?", "Ask them to smile: does one side of the mouth droop?"))
                         PlsStepItem(tr("A (Bras / Arms)", "A (Arms)"), tr("Demandez de lever les deux bras : l'un retombe-t-il immédiatement ?", "Ask them to raise both arms: does one drop straight away?"))
                         PlsStepItem(tr("S (Parole / Speech)", "S (Speech)"), tr("Faites répéter une phrase simple : la parole est-elle confuse ou pâteuse ?", "Ask them to repeat a simple sentence: is their speech confused or slurred?"))
-                        PlsStepItem(tr("T (Temps / Time)", "T (Time)"), tr("Si un seul signe est présent, notez l'heure exacte et appelez le 15 immédiatement.", "If even one sign is present, note the exact time and call 15 immediately."))
+                        PlsStepItem(tr("T (Temps / Time)", "T (Time)"), tr("Si un seul signe est présent, notez l'heure exacte et appelez le 15 immédiatement, même si le signe disparaît. Autres signes : perte de vision brutale, mal de tête violent, perte d'équilibre.", "If even one sign is present, note the exact time and call 15 immediately, even if the sign fades. Other signs: sudden loss of vision, severe headache, loss of balance."))
 
                         Spacer(modifier = Modifier.height(24.dp))
 

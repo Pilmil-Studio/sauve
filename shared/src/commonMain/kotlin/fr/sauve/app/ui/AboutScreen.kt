@@ -98,8 +98,9 @@ fun AboutScreen(
                 ) {
                     Text(tr("• Aucune connexion réseau : rien ne quitte le téléphone", "• No network connection: nothing leaves the phone"), fontWeight = FontWeight.Bold, color = EmergencyGreen, fontSize = 13.sp)
                     Text(tr("• Démarrage immédiat sans compte ni écran de veille", "• Starts instantly, no account, no splash screen"), fontSize = 13.sp)
-                    Text(tr("• Métronome haptique haute précision à 110 bpm", "• High-precision haptic metronome at 110 bpm"), fontSize = 13.sp)
+                    Text(tr("• Métronome sonore et haptique à 110 bpm", "• Sound and haptic metronome at 110 bpm"), fontSize = 13.sp)
                     Text(tr("• Synthèse vocale pas-à-pas mains-libres", "• Hands-free, step-by-step voice guidance"), fontSize = 13.sp)
+                    Text(tr("• Aide-mémoire inspiré des recommandations PSC : ne remplace ni une formation aux premiers secours ni l'appel aux secours", "• A memory aid based on French PSC recommendations: it replaces neither first-aid training nor calling for help"), fontWeight = FontWeight.Bold, fontSize = 13.sp)
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 val uriHandler = LocalUriHandler.current
