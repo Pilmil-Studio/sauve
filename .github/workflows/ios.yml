@@ -57,7 +57,7 @@ jobs:
           ls Sauve.app/PlugIns
           zip -qr "$GITHUB_WORKSPACE/Sauve-simulateur.zip" Sauve.app
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: sauve-simulateur-ios
           path: Sauve-simulateur.zip
