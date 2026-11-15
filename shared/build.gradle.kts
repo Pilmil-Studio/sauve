@@ -27,17 +27,17 @@ kotlin {
             api(compose.material3)
             api(compose.ui)
             implementation(compose.components.resources)
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
             implementation("fr.pilmil.core:core-platform:0.1.0")
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
         }
         androidUnitTest.dependencies {
             implementation("junit:junit:4.13.2")
             implementation(kotlin("test"))
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
         }
     }
 }
