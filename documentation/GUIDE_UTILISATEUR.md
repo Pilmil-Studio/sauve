@@ -40,7 +40,7 @@ Quatre cartes principales permettent de lancer immédiatement le guidage interac
    - **Compressions continues** (recommandé si vous n'êtes pas formé aux insufflations ou sans masque).
    - **Cycles 30:2** (30 compressions suivies d'une pause de 4,5 secondes pour 2 insufflations).
 3. **Guidage en direct** :
-   - **Métronome RCP** réglé par défaut à **110 BPM** (ajustable entre 80 et 140 BPM), accompagné d'une impulsion haptique (`HapticPulse`) à chaque battement.
+   - **Métronome RCP** réglé à **110 BPM**, accompagné à chaque battement d'un clic sonore (bascule « Son » sur l'écran) et d'une impulsion haptique (`HapticPulse`).
    - **4 étapes** affichées séquentiellement (sécuriser, vérifier la conscience/respiration, alerter, masser).
    - **Alerte vocale de relais** toutes les **2 minutes** (synthèse vocale hors-ligne) pour inviter à changer de sauveteur si plusieurs personnes sont présentes.
    - **Boîte de dialogue DAE** : rappel de l'utilisation du défibrillateur automatisé externe dès qu'il est disponible.
@@ -48,7 +48,7 @@ Quatre cartes principales permettent de lancer immédiatement le guidage interac
 
 ### Étouffement (`ChokingScreen`)
 Guide pas à pas distinguant l'obstruction totale chez l'adulte/enfant et chez le nourrisson :
-- Série de **5 claques dans le dos** entre les omoplates.
+- Série de **claques dans le dos** (jusqu'à 5) entre les omoplates, à arrêter dès que l'objet sort.
 - En cas d'échec, **5 compressions abdominales** (méthode de Heimlich) pour l'adulte/enfant, ou **5 compressions thoraciques** pour le nourrisson.
 
 ### Hémorragie grave (`BleedingScreen`)
@@ -60,7 +60,7 @@ Guide pas à pas distinguant l'obstruction totale chez l'adulte/enfant et chez l
 ### PLS, Brûlure & AVC (`RecoveryScreen`)
 Regroupe trois protocoles courants :
 - **Position Latérale de Sécurité (PLS)** en 4 étapes illustrées.
-- **Brûlure** : refroidissement sous l'eau tempérée avec **minuteur de 15 minutes (900 secondes)**.
+- **Brûlure** : arrosage à l'eau courante tempérée, 10 minutes au moins, idéalement 20, avec un **minuteur de 15 minutes** qui invite à continuer si la douleur persiste.
 - **Test FAST (AVC)** : vérification rapide Visage, Bras, Parole et heure d'apparition des symptômes.
 
 ---

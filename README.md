@@ -23,14 +23,14 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 | Urgence | Ce que fait l'application | Référentiel médical |
 |---|---|---|
 | **Arrêt Cardiaque** | Diagnostic express conscience/respiration, appel direct SAMU 15 / 112, **métronome à 110 bpm** donné par un clic sonore et par la vibration (le son se coupe d'un appui), guidage vocal du compte des compressions (continu ou 30:2), alerte de relais toutes les 2 minutes, guide DAE. | ERC 2021 / PSC1 |
-| **Étouffement Aigu** | Détection immédiate obstruction partielle vs totale, boucle guidée **5 claques dans le dos / 5 compressions abdominales (Heimlich)**, variante Mofenson pour nourrisson, bascule d'urgence en 1 tap en cas de perte de connaissance. | PSC1 / ERC |
+| **Étouffement Aigu** | Détection immédiate obstruction partielle vs totale, boucle guidée **claques dans le dos puis compressions abdominales (Heimlich), jusqu'à 5 de chaque**, variante pour le nourrisson, la femme enceinte et la personne obèse, bascule d'urgence en 1 tap en cas de perte de connaissance. | PSC1 / ERC |
 | **Hémorragie Grave** | Consignes de **compression manuelle directe continue**, chronomètre de maintien, alerte haut-parleur SAMU, gestion des corps étrangers et pose de garrot avec enregistrement de l'heure. | PSC1 |
-| **Inconscient (PLS) & Brûlures** | Guidage pas-à-pas de la **Position Latérale de Sécurité** pour personne inconsciente qui respire, **minuteur de 15 minutes** pour le refroidissement sous l'eau (règle des 15-15-15), test FAST pour AVC. | PSC1 / Recommandations Brûlures |
+| **Inconscient (PLS) & Brûlures** | Guidage pas-à-pas de la **Position Latérale de Sécurité** pour personne inconsciente qui respire, **minuteur** pour l'arrosage à l'eau tempérée (10 minutes au moins, idéalement 20), test FAST pour AVC. | PSC1 / Recommandations Brûlures |
 
 ### Fonctions complémentaires (hors urgence & accès direct)
 
 - **Mode entraînement (2 min)** : session de pratique au massage cardiaque à 110 bpm sans appeler les secours, avec **rappel trimestriel facultatif** de révision sur Android (`POST_NOTIFICATIONS`).
-- **Guide Réflexes PSC1** : 6 fiches synthétiques illustrées (incluant les signes d'AVC et les erreurs à éviter).
+- **Guide des gestes** : 6 fiches synthétiques illustrées (incluant les signes d'AVC et les erreurs à éviter).
 - **Widget SOS & raccourcis d'icône** : accès direct aux urgences depuis l'écran d'accueil ou l'appui long sur l'icône, sur Android (`SosWidget`, `shortcuts.xml`) comme sur iOS (`SauveWidget`).
 
 ---
@@ -74,4 +74,4 @@ Distribuée sous licence [Mozilla Public License 2.0](LICENSE) (MPL-2.0) : vous 
 
 ## Note sur le développement
 
-Le code de Sauve a été développé avec l'aide d'un assistant IA (Claude, d'Anthropic) : l'application elle-même n'embarque aucune intelligence artificielle, les gestes décrits suivent les référentiels publics cités plus haut (PSC1, ERC 2021), la cadence du massage est déterministe et couverte par des tests automatiques, et je maintiens personnellement le projet en répondant moi-même aux tickets et aux messages.
+Le code de Sauve a été développé avec l'aide d'un assistant IA (Claude, d'Anthropic) : l'application elle-même n'embarque aucune intelligence artificielle, les gestes décrits s'appuient sur les référentiels publics cités plus haut (PSC1, ERC 2021) ; ils ont été relus face aux recommandations PSC publiées, mais pas encore validés par un formateur ou un médecin. Sauve est un aide-mémoire : elle ne remplace ni une formation aux premiers secours ni l'appel aux secours. Par ailleurs, la cadence du massage est déterministe et couverte par des tests automatiques, et je maintiens personnellement le projet en répondant moi-même aux tickets et aux messages.
