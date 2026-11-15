@@ -4,11 +4,11 @@
 
 [![Build](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml/badge.svg)](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml)
 
-Application Android de **premiers secours « Anti-Panique »**, 100 % hors-ligne, gratuite, sans publicité, sans inscription et sans aucune collecte de données. Fait partie de la suite d'applications de biens communs **Pilmil Studio** (avec *Lunaison*, *Sommelle*, *Respire* et *Sillon*).
+Application de **premiers secours « Anti-Panique »** (Android & iOS via Kotlin Multiplatform / Compose Multiplatform), 100 % hors-ligne, gratuite, sans publicité, sans inscription et sans aucune collecte de données. Disponible en français et en anglais. Fait partie de la suite d'applications de biens communs **Pilmil Studio** (*Lunaison*, *Sommelle*, *Respire*, *Sillon*, *Fredonne*).
 
-Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se rétrécit en tunnel. **Sauve** est pensée pour aller droit au but en moins de 300 ms, sans menu complexe, avec un guidage vocal et haptique mains-libres.
+Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se rétrécit en tunnel. **Sauve** est pensée pour aller droit au but, sans menu complexe, avec un guidage vocal, visuel (illustrations vectorielles des gestes) et haptique mains-libres.
 
-**[Site officiel Sauve](https://pilmil-studio.github.io/sauve/)** · **[Télécharger la préversion (APK)](https://github.com/Pilmil-Studio/sauve/releases/tag/dev)**
+**[Site officiel Sauve](https://pilmil-studio.github.io/sauve/)** · **[Télécharger l'APK](https://github.com/Pilmil-Studio/sauve/releases/latest)**
 
 ---
 
@@ -27,27 +27,34 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 | **Hémorragie Grave** | Consignes de **compression manuelle directe continue**, chronomètre de maintien, alerte haut-parleur SAMU, gestion des corps étrangers et pose de garrot avec enregistrement de l'heure. | PSC1 |
 | **Inconscient (PLS) & Brûlures** | Guidage pas-à-pas de la **Position Latérale de Sécurité** pour personne inconsciente qui respire, **minuteur de 15 minutes** pour le refroidissement sous l'eau (règle des 15-15-15), test FAST pour AVC. | PSC1 / Recommandations Brûlures |
 
+### Fonctions complémentaires (hors urgence & accès direct)
+
+- **Mode entraînement (2 min)** : session de pratique au massage cardiaque à 110 bpm sans appeler les secours, avec **rappel trimestriel facultatif** de révision sur Android (`POST_NOTIFICATIONS`).
+- **Guide Réflexes PSC1** : 6 fiches synthétiques illustrées (incluant les signes d'AVC et les erreurs à éviter).
+- **Widget SOS & raccourcis d'icône** : accès direct aux urgences depuis l'écran d'accueil ou l'appui long sur l'icône, sur Android (`SosWidget`, `shortcuts.xml`) comme sur iOS (`SauveWidget`).
+
 ---
 
 ## Engagements éthiques & techniques
 
 - **Zéro permission INTERNET :** Aucune autorisation réseau n'est demandée dans le manifeste Android (`AndroidManifest.xml`). L'application fonctionne sans réseau, au fond d'une cave ou en zone blanche, et aucune donnée ne sort de votre téléphone.
-- **Démarrage instantané (< 300 ms) :** Aucun écran de chargement, aucun tutoriel bloquant, aucun compte à créer.
+- **Démarrage direct :** Aucun écran de chargement, aucun tutoriel bloquant, aucun compte à créer.
 - **Mains-libres :** Synthèse vocale Android locale (`TextToSpeech`) et vibrations cadencées (`Vibrator`) pour vous permettre d'avoir les deux mains occupées à masser ou comprimer.
 - **Appel d'urgence en 1 tap :** Raccourcis directs vers le 15 (SAMU), le 18 (Pompiers), le 112 (Numéro européen) et le 114 (SMS).
 - **Gratuité inconditionnelle :** Aucun achat intégré, aucun abonnement, aucune fonctionnalité restreinte.
 
 ---
 
-## Installation
+## Installation et compilation
 
-- **APK direct :** Téléchargez la [préversion](https://github.com/Pilmil-Studio/sauve/releases/tag/dev) (signée avec la clé de développement, une version signée de publication suivra).
+- **APK direct :** Téléchargez la [dernière version](https://github.com/Pilmil-Studio/sauve/releases/latest).
+- **Depuis les sources :** `./gradlew :app:assembleDebug` (JDK 17, modules `:shared` KMP, `:app` Android et sous-module `pilmil-core`).
 
 ---
 
 ## iPhone
 
-L'appli iPhone partage le code d'Android (Kotlin Multiplatform et Compose Multiplatform, module `shared`) : mêmes écrans, mêmes contenus, même cadence de massage. La coque iOS (`iosApp`) ajoute ce qu'Apple impose d'écrire à part : raccourcis de l'icône, widget SOS, voix et vibrations du système.
+L'appli iPhone partage le code d'Android (Kotlin Multiplatform et Compose Multiplatform, module `:shared`) : mêmes écrans, mêmes illustrations, mêmes contenus, même cadence de massage. La coque iOS (`iosApp`) ajoute l'intégration système spécifique : raccourcis de l'icône, widget SOS (`SauveWidget`), voix et vibrations du système.
 
 Elle n'est pas encore publiée sur l'App Store. Chaque passage de la CI (workflow « iOS ») compile l'appli pour le simulateur et fournit un fichier `Sauve-simulateur.zip`, utilisable tel quel dans un simulateur iOS ou un service comme Appetize. Elle n'a pas encore été essayée sur un vrai iPhone.
 
@@ -58,7 +65,8 @@ Elle n'est pas encore publiée sur l'App Store. Chaque passage de la CI (workflo
 - **[Respire](https://github.com/Pilmil-Studio/respire) :** Déconnexion sereine & micro-pauses sans tracking
 - **[Lunaison](https://github.com/Pilmil-Studio/lunaison) :** Suivi intime du cycle menstruel 100 % hors-ligne
 - **[Sommelle](https://github.com/Pilmil-Studio/sommelle) :** Journal et régularité du sommeil sans pub ni compte
-- **[Sauve](https://github.com/Pilmil-Studio/sauve) :** Premiers secours anti-panique 100 % hors-ligne
+- **[Sillon](https://github.com/Pilmil-Studio/sillon) :** Potager vivant et calendrier agronomique indexé sur les gelées
+- **[Fredonne](https://github.com/Pilmil-Studio/fredonne) :** Saisie mélodique, écoute acoustique hors-ligne et transposition
 
 ## Licence
 

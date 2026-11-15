@@ -4,11 +4,11 @@
 
 [![Build](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml/badge.svg)](https://github.com/Pilmil-Studio/sauve/actions/workflows/build.yml)
 
-An **anti-panic first aid** Android application, 100% offline, free, ad-free, with no account, no tracking and zero internet permission. Part of the **Pilmil Studio** public interest suite (along with *Lunaison*, *Sommelle*, *Respire* and *Sillon*).
+An **anti-panic first aid** application (Android & iOS via Kotlin Multiplatform / Compose Multiplatform), 100% offline, free, ad-free, with no account, no tracking and zero internet permission. Available in French and English. Part of the **Pilmil Studio** public interest suite (*Lunaison*, *Sommelle*, *Respire*, *Sillon*, *Fredonne*).
 
-In an emergency, adrenaline and panic induce tunnel vision and motor impairment. **Sauve** is designed to open in under 300 ms, skip all non-essential menus, and provide step-by-step hands-free voice and haptic feedback.
+In an emergency, adrenaline and panic induce tunnel vision and motor impairment. **Sauve** is designed to open straight onto the emergency choices, skip all non-essential menus, and provide step-by-step hands-free voice, visual (vector gesture illustrations) and haptic feedback.
 
-**[Sauve website](https://pilmil-studio.github.io/sauve/)** · **[Download the preview build (APK)](https://github.com/Pilmil-Studio/sauve/releases/tag/dev)**
+**[Sauve website](https://pilmil-studio.github.io/sauve/)** · **[Download APK](https://github.com/Pilmil-Studio/sauve/releases/latest)**
 
 ---
 
@@ -27,20 +27,33 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 | **Severe Bleeding** | **Continuous manual direct pressure** instructions, duration timer, hands-free speakerphone emergency call, foreign body advice, tourniquet guidance with time logger. | PSC1 |
 | **Recovery (PLS) & Burns** | Step-by-step **Recovery Position (PLS)** for unconscious breathing victims, **15-minute cooling water timer** (15-15-15 rule), FAST stroke recognition test. | PSC1 / Burns guidelines |
 
+### Additional features (practice & quick access)
+
+- **2-minute CPR training mode**: practice chest compressions at 110 bpm without dialing emergency services, with an **optional quarterly review reminder** on Android (`POST_NOTIFICATIONS`).
+- **PSC1 Reflex Guide**: 6 illustrated reference sheets (including stroke signs and mistakes to avoid).
+- **SOS widget & app icon shortcuts**: direct emergency access from the home screen or long-pressing the app icon, on both Android (`SosWidget`, `shortcuts.xml`) and iOS (`SauveWidget`).
+
 ---
 
 ## Ethical & Technical Commitments
 
 - **Zero INTERNET permission:** No network access declared in the Android manifest (`AndroidManifest.xml`). Operates in basements, flight mode or complete blackout; data never leaves your device.
-- **Instant launch (< 300 ms):** No loading splash, no onboarding wall, no account required.
+- **Direct launch:** No loading splash, no onboarding wall, no account required.
 - **Hands-free guidance:** Native local Android `TextToSpeech` and precision vibration `Vibrator` keep your hands free for compressions and wound pressure.
 - **1-tap emergency dial:** Direct dialer shortcuts for 15 (SAMU), 18 (Fire/Rescue), 112 (Europe) and 114 (Emergency SMS).
 
 ---
 
+## Install & build
+
+- **APK:** Download the [latest release](https://github.com/Pilmil-Studio/sauve/releases/latest).
+- **From source:** `./gradlew :app:assembleDebug` (JDK 17, `:shared` KMP module, `:app` Android shell, and `pilmil-core` submodule).
+
+---
+
 ## iPhone
 
-The iPhone app shares its code with Android (Kotlin Multiplatform and Compose Multiplatform, `shared` module): same screens, same content, same compression cadence. The iOS shell (`iosApp`) adds what Apple requires to be written separately: app icon shortcuts, SOS widget, system voice and haptics.
+The iPhone app shares its code with Android (Kotlin Multiplatform and Compose Multiplatform, `:shared` module): same screens, same illustrations, same content, same compression cadence. The iOS shell (`iosApp`) adds platform-specific integration: app icon shortcuts, SOS widget (`SauveWidget`), system voice and haptics.
 
 It is not on the App Store yet. Every CI run (the "iOS" workflow) builds the app for the simulator and provides a `Sauve-simulateur.zip` file that works as is in an iOS simulator or a service such as Appetize. It has not been tried on a real iPhone yet.
 
@@ -51,7 +64,8 @@ It is not on the App Store yet. Every CI run (the "iOS" workflow) builds the app
 - **[Respire](https://github.com/Pilmil-Studio/respire):** Screen-time pauses & calm disconnection without tracking
 - **[Lunaison](https://github.com/Pilmil-Studio/lunaison):** Intimate menstrual cycle tracker 100% offline
 - **[Sommelle](https://github.com/Pilmil-Studio/sommelle):** Sleep log & consistency without ads or account
-- **[Sauve](https://github.com/Pilmil-Studio/sauve):** Anti-panic first aid 100% offline
+- **[Sillon](https://github.com/Pilmil-Studio/sillon):** Living vegetable garden planner and frost-indexed calendar
+- **[Fredonne](https://github.com/Pilmil-Studio/fredonne):** Single-voice melody entry, offline acoustic playback and transposition
 
 ## License
 
