@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -292,7 +293,7 @@ fun CardiacScreen(
                             colors = ButtonDefaults.buttonColors(containerColor = EmergencyRedDark, contentColor = Color.White),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .heightIn(min = 56.dp),
                             shape = RoundedCornerShape(12.dp),
                         ) {
                             Text(tr("Appeler le 15 (SAMU)", "Call 15 (Medical)"), fontSize = 18.sp, fontWeight = FontWeight.Bold)
@@ -305,7 +306,7 @@ fun CardiacScreen(
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .heightIn(min = 56.dp),
                             shape = RoundedCornerShape(12.dp),
                         ) {
                             Text(tr("Démarrer le massage cardiaque →", "Start chest compressions →"), fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
@@ -473,7 +474,7 @@ private fun CprActiveScreen(
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(64.dp),
+                    .heightIn(min = 64.dp),
                 border = if (isRunning) BorderStroke(2.dp, EmergencyRed) else null,
             ) {
                 Text(
@@ -494,7 +495,7 @@ private fun CprActiveScreen(
                     onClick = onOpenDaeGuide,
                     modifier = Modifier
                         .weight(1f)
-                        .height(48.dp),
+                        .heightIn(min = 48.dp),
                     shape = RoundedCornerShape(12.dp),
                 ) {
                     Text(tr("DAE disponible", "AED available"), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = EmergencyGreenText)
@@ -503,7 +504,7 @@ private fun CprActiveScreen(
                     onClick = onToggleMode,
                     modifier = Modifier
                         .weight(1f)
-                        .height(48.dp),
+                        .heightIn(min = 48.dp),
                     shape = RoundedCornerShape(12.dp),
                 ) {
                     Text(
@@ -527,7 +528,7 @@ private fun CprActiveScreen(
                     onClick = onToggleBeatSound,
                     modifier = Modifier
                         .weight(1f)
-                        .height(48.dp)
+                        .heightIn(min = 48.dp)
                         .semantics {
                             role = Role.Switch
                             contentDescription = soundLabel
@@ -545,7 +546,7 @@ private fun CprActiveScreen(
                     onClick = onToggleVoice,
                     modifier = Modifier
                         .weight(1f)
-                        .height(48.dp)
+                        .heightIn(min = 48.dp)
                         .semantics {
                             role = Role.Switch
                             contentDescription = voiceLabel
@@ -609,7 +610,7 @@ private fun EmergencyStepCard(
                 shape = RoundedCornerShape(14.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(60.dp),
+                    .heightIn(min = 60.dp),
             ) {
                 Text(primaryActionLabel, fontSize = 17.sp, fontWeight = FontWeight.Bold)
             }
@@ -619,7 +620,7 @@ private fun EmergencyStepCard(
                 shape = RoundedCornerShape(14.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(52.dp),
+                    .heightIn(min = 52.dp),
             ) {
                 Text(secondaryActionLabel, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
             }

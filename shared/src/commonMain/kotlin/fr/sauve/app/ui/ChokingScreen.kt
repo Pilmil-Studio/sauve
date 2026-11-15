@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -122,7 +123,7 @@ fun ChokingScreen(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(52.dp),
+                    .heightIn(min = 52.dp),
             ) {
                 Text(tr("La victime s'effondre / Perte de connaissance", "The person collapses / loses consciousness"), fontSize = 14.sp, fontWeight = FontWeight.Bold)
             }
@@ -167,7 +168,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .heightIn(min = 56.dp),
                         ) {
                             Text(tr("NON (Aucun son, panique)", "NO (no sound, panic)"), fontSize = 16.sp, fontWeight = FontWeight.Bold)
                         }
@@ -177,7 +178,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(52.dp),
+                                .heightIn(min = 52.dp),
                         ) {
                             Text(tr("OUI (Elle tousse ou parle)", "YES (coughing or speaking)"), fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                         }
@@ -226,7 +227,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(52.dp),
+                                .heightIn(min = 52.dp),
                         ) {
                             Text(tr("L'objet est sorti / Respiration rétablie", "The object is out / breathing again"), fontWeight = FontWeight.Bold)
                         }
@@ -308,7 +309,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .heightIn(min = 56.dp),
                         ) {
                             Text(
                                 if (currentActionCount < 5) tr("Claque donnée suivante (${currentActionCount + 1})", "Blow given, next (${currentActionCount + 1})") else tr("Passer aux compressions →", "Go to thrusts →"),
@@ -323,7 +324,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(50.dp),
+                                .heightIn(min = 50.dp),
                         ) {
                             Text(tr("L'objet est expulsé !", "The object is out!"), fontWeight = FontWeight.Bold)
                         }
@@ -396,7 +397,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .heightIn(min = 56.dp),
                         ) {
                             Text(
                                 if (currentActionCount < 5) tr("Compression suivante (${currentActionCount + 1})", "Next thrust (${currentActionCount + 1})") else tr("Revenir aux 5 claques dans le dos →", "Back to 5 back blows →"),
@@ -411,7 +412,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(50.dp),
+                                .heightIn(min = 50.dp),
                         ) {
                             Text(tr("L'objet est expulsé !", "The object is out!"), fontWeight = FontWeight.Bold)
                         }
@@ -459,7 +460,7 @@ fun ChokingScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(52.dp),
+                                .heightIn(min = 52.dp),
                         ) {
                             Text(tr("Retour à l'accueil", "Back to home"), fontWeight = FontWeight.Bold)
                         }

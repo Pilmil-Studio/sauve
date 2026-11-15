@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -171,7 +172,7 @@ fun BleedingScreen(
                     shape = RoundedCornerShape(14.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(58.dp),
+                        .heightIn(min = 58.dp),
                 ) {
                     Text(tr("Appeler le 15 (SAMU en haut-parleur)", "Call 15 (Medical, on speaker)"), fontSize = 16.sp, fontWeight = FontWeight.Bold)
                 }
@@ -205,7 +206,7 @@ fun BleedingScreen(
                         onClick = { showForeignBodyDialog = true },
                         modifier = Modifier
                             .weight(1f)
-                            .height(48.dp),
+                            .heightIn(min = 48.dp),
                         shape = RoundedCornerShape(10.dp),
                     ) {
                         Text(tr("Objet planté", "Object in wound"), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
@@ -214,7 +215,7 @@ fun BleedingScreen(
                         onClick = { showTourniquetDialog = true },
                         modifier = Modifier
                             .weight(1f)
-                            .height(48.dp),
+                            .heightIn(min = 48.dp),
                         shape = RoundedCornerShape(10.dp),
                     ) {
                         Text(tr("Poser un garrot", "Apply a tourniquet"), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)

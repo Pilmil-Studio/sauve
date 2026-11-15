@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -200,7 +201,7 @@ fun RecoveryScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(54.dp),
+                                .heightIn(min = 54.dp),
                         ) {
                             Text(tr("Alerter le 15 (SAMU)", "Call 15 (Medical)"), fontSize = 16.sp, fontWeight = FontWeight.Bold)
                         }
@@ -254,7 +255,7 @@ fun RecoveryScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(52.dp),
+                                .heightIn(min = 52.dp),
                         ) {
                             Text(if (isBurnTimerRunning) tr("Mettre en pause", "Pause") else tr("Démarrer les 15 minutes", "Start the 15 minutes"), fontWeight = FontWeight.Bold)
                         }
@@ -313,7 +314,7 @@ fun RecoveryScreen(
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .heightIn(min = 56.dp),
                         ) {
                             Text(tr("Appeler le 15 (SAMU)", "Call 15 (Medical)"), fontSize = 16.sp, fontWeight = FontWeight.Bold)
                         }
