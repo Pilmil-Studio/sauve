@@ -22,7 +22,7 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 
 | Urgence | Ce que fait l'application | Référentiel médical |
 |---|---|---|
-| **Arrêt Cardiaque** | Diagnostic express conscience/respiration, appel direct SAMU 15 / 112, **métronome haptique à 110 bpm** dans la poche, guidage vocal du compte des compressions (continu ou 30:2), alerte de relais toutes les 2 minutes, guide DAE. | ERC 2021 / PSC1 |
+| **Arrêt Cardiaque** | Diagnostic express conscience/respiration, appel direct SAMU 15 / 112, **métronome à 110 bpm** donné par un clic sonore et par la vibration (le son se coupe d'un appui), guidage vocal du compte des compressions (continu ou 30:2), alerte de relais toutes les 2 minutes, guide DAE. | ERC 2021 / PSC1 |
 | **Étouffement Aigu** | Détection immédiate obstruction partielle vs totale, boucle guidée **5 claques dans le dos / 5 compressions abdominales (Heimlich)**, variante Mofenson pour nourrisson, bascule d'urgence en 1 tap en cas de perte de connaissance. | PSC1 / ERC |
 | **Hémorragie Grave** | Consignes de **compression manuelle directe continue**, chronomètre de maintien, alerte haut-parleur SAMU, gestion des corps étrangers et pose de garrot avec enregistrement de l'heure. | PSC1 |
 | **Inconscient (PLS) & Brûlures** | Guidage pas-à-pas de la **Position Latérale de Sécurité** pour personne inconsciente qui respire, **minuteur de 15 minutes** pour le refroidissement sous l'eau (règle des 15-15-15), test FAST pour AVC. | PSC1 / Recommandations Brûlures |
@@ -39,7 +39,7 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 
 - **Zéro permission INTERNET :** Aucune autorisation réseau n'est demandée dans le manifeste Android (`AndroidManifest.xml`). L'application fonctionne sans réseau, au fond d'une cave ou en zone blanche, et aucune donnée ne sort de votre téléphone.
 - **Démarrage direct :** Aucun écran de chargement, aucun tutoriel bloquant, aucun compte à créer.
-- **Mains-libres :** Synthèse vocale Android locale (`TextToSpeech`) et vibrations cadencées (`Vibrator`) pour vous permettre d'avoir les deux mains occupées à masser ou comprimer.
+- **Mains-libres :** Synthèse vocale Android locale (`TextToSpeech`) vibrations cadencées (`Vibrator`) et clic sonore du rythme pour vous permettre d'avoir les deux mains occupées à masser ou comprimer.
 - **Appel d'urgence en 1 tap :** Raccourcis directs vers le 15 (SAMU), le 18 (Pompiers), le 112 (Numéro européen) et le 114 (SMS).
 - **Gratuité inconditionnelle :** Aucun achat intégré, aucun abonnement, aucune fonctionnalité restreinte.
 

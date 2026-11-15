@@ -22,7 +22,7 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 
 | Emergency | What the app does | Medical guidelines |
 |---|---|---|
-| **Cardiac Arrest** | Rapid consciousness & breathing check, direct emergency call (15 / 112), **haptic metronome at 110 bpm** in pocket, spoken compression count (continuous or 30:2), 2-minute rescuer relay alarm, AED guide. | ERC 2021 / PSC1 |
+| **Cardiac Arrest** | Rapid consciousness & breathing check, direct emergency call (15 / 112), **metronome at 110 bpm** given by a sound click and by vibration (sound can be switched off), spoken compression count (continuous or 30:2), 2-minute rescuer relay alarm, AED guide. | ERC 2021 / PSC1 |
 | **Choking (Airway Obstruction)** | Partial vs complete obstruction detection, guided **5 back blows / 5 abdominal thrusts (Heimlich)** cycle, Mofenson infant variation, instant 1-tap transition if victim loses consciousness. | PSC1 / ERC |
 | **Severe Bleeding** | **Continuous manual direct pressure** instructions, duration timer, hands-free speakerphone emergency call, foreign body advice, tourniquet guidance with time logger. | PSC1 |
 | **Recovery (PLS) & Burns** | Step-by-step **Recovery Position (PLS)** for unconscious breathing victims, **15-minute cooling water timer** (15-15-15 rule), FAST stroke recognition test. | PSC1 / Burns guidelines |
@@ -39,7 +39,7 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 
 - **Zero INTERNET permission:** No network access declared in the Android manifest (`AndroidManifest.xml`). Operates in basements, flight mode or complete blackout; data never leaves your device.
 - **Direct launch:** No loading splash, no onboarding wall, no account required.
-- **Hands-free guidance:** Native local Android `TextToSpeech` and precision vibration `Vibrator` keep your hands free for compressions and wound pressure.
+- **Hands-free guidance:** Native local Android `TextToSpeech` precision vibration `Vibrator` and a beat click keep your hands free for compressions and wound pressure.
 - **1-tap emergency dial:** Direct dialer shortcuts for 15 (SAMU), 18 (Fire/Rescue), 112 (Europe) and 114 (Emergency SMS).
 
 ---
