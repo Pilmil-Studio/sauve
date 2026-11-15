@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>EmptyFunctionBlock:IosSauvePlatform.kt$IosSauvePlatform${}</ID>
+    <ID>InvalidPackageDeclaration:PlatformAndroid.kt$package fr.sauve.app.i18n</ID>
+    <ID>UnusedParameter:AboutScreen.kt$pkg: String</ID>
+    <ID>UnusedParameter:CardiacScreen.kt$metronome: Metronome</ID>
+    <ID>UnusedParameter:CardiacScreen.kt$speechEngine: Speech</ID>
+  </CurrentIssues>
+</SmellBaseline>
