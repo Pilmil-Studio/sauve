@@ -11,12 +11,14 @@ import fr.sauve.app.platform.SauvePlatform
 import fr.sauve.app.platform.Speech
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import platform.AVFAudio.AVAudioSession
 import platform.AVFAudio.AVAudioSessionCategoryPlayback
 import platform.AVFAudio.AVSpeechBoundary
 import platform.AVFAudio.AVSpeechSynthesisVoice
 import platform.AVFAudio.AVSpeechSynthesizer
 import platform.AVFAudio.AVSpeechUtterance
+import platform.Foundation.NSBundle
 import platform.Foundation.NSURL
 import platform.Foundation.NSUserDefaults
 import platform.UIKit.UIApplication
@@ -36,8 +38,9 @@ import platform.darwin.dispatch_get_main_queue
 class IosSauvePlatform : SauvePlatform {
 
     private val haptic = UIImpactFeedbackGenerator(style = UIImpactFeedbackStyle.UIImpactFeedbackStyleHeavy)
+    private val scope = MainScope()
 
-    private val cpr = CprMetronome(MainScope(), {
+    private val cpr = CprMetronome(scope, {
         haptic.prepare()
         haptic.impactOccurred()
     })
@@ -45,6 +48,8 @@ class IosSauvePlatform : SauvePlatform {
     override val metronome: Metronome get() = cpr
     override val speech: Speech = IosSpeech()
     override val reviewReminder: ReviewReminderPort = IosReviewReminder()
+    override val versionName: String =
+        NSBundle.mainBundle.infoDictionary?.get("CFBundleShortVersionString") as? String ?: "1.0.0"
 
     override fun dial(number: String) = open("tel:$number")
 
@@ -64,6 +69,7 @@ class IosSauvePlatform : SauvePlatform {
     fun release() {
         cpr.stop()
         speech.stop()
+        scope.cancel()
     }
 }
 

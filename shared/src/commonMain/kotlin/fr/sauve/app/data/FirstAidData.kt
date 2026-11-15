@@ -43,7 +43,7 @@ enum class EmergencyCategory(
 enum class VictimProfile(val label: String, val ageHint: String) {
     ADULT(tr("Adulte", "Adult"), tr("> 8 ans", "> 8 years")),
     CHILD(tr("Enfant", "Child"), tr("1 à 8 ans", "1 to 8 years")),
-    INFANT(tr("Nourrisson", "Infant"), "< 1 an")
+    INFANT(tr("Nourrisson", "Infant"), tr("< 1 an", "< 1 year"))
 }
 
 /**

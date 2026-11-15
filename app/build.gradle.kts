@@ -41,12 +41,14 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
+            // Jamais de repli sur la clé de test : voir le garde-fou plus bas.
+            signingConfig = signingConfigs.findByName("release")
         }
     }
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -55,6 +57,22 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+}
+
+// Une variante release sans clé d'envoi échoue au lieu d'être signée avec la clé de test publique.
+// Les tests unitaires et les builds debug ne sont pas concernés.
+gradle.taskGraph.whenReady {
+    val buildsRelease = allTasks.any { t ->
+        t.project == project && Regex("^(assemble|bundle|package|sign|validateSigning).*Release$").matches(t.name)
+    }
+    if (buildsRelease && project.extensions.getByType<com.android.build.api.dsl.ApplicationExtension>()
+            .signingConfigs.findByName("release") == null) {
+        throw GradleException(
+            "Signature release impossible : clé d'envoi absente. Définir les variables d'environnement " +
+                "RELEASE_KEYSTORE (chemin d'un fichier existant), RELEASE_STORE_PASSWORD et RELEASE_KEY_ALIAS. " +
+                "Pour un test local, utiliser assembleDebug."
+        )
     }
 }
 

@@ -36,6 +36,7 @@ interface SauvePlatform {
     val metronome: Metronome
     val speech: Speech
     val reviewReminder: ReviewReminderPort?
+    val versionName: String
 
     /** Ouvre le composeur avec le numéro, sans appeler à la place de la personne. */
     fun dial(number: String)

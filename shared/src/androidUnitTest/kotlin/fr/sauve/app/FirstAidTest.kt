@@ -4,6 +4,7 @@ import fr.sauve.app.data.EmergencyCategory
 import fr.sauve.app.data.FirstAidData
 import fr.sauve.app.data.VictimProfile
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
@@ -82,5 +83,57 @@ class FirstAidTest {
         assertEquals("Adulte", adult.label)
         assertEquals("Enfant", child.label)
         assertEquals("Nourrisson", infant.label)
+        assertEquals("< 1 an", infant.ageHint)
+    }
+
+    @Test
+    fun victimProfilesHaveNonBlankAgeHints() {
+        VictimProfile.entries.forEach { profile ->
+            assertTrue("ageHint vide pour ${profile.name}", profile.ageHint.isNotBlank())
+        }
+    }
+
+    @Test
+    fun emergencyCategoriesHaveDistinctNonZeroColors() {
+        val colors = EmergencyCategory.entries.map { it.colorHex }
+        assertEquals(EmergencyCategory.entries.size, colors.toSet().size)
+        assertTrue(colors.all { it != 0L })
+    }
+
+    @Test
+    fun emergencyNumbersHaveUniqueNumbersAndValidSmsFlags() {
+        val numbers = FirstAidData.EMERGENCY_NUMBERS
+        assertEquals(numbers.size, numbers.map { it.number }.toSet().size)
+
+        numbers.forEach { item ->
+            assertTrue(item.number.isNotBlank())
+            assertTrue(item.label.isNotBlank())
+            assertTrue(item.description.isNotBlank())
+        }
+
+        val byNumber = numbers.associateBy { it.number }
+        assertFalse(byNumber.getValue("15").isSms)
+        assertFalse(byNumber.getValue("18").isSms)
+        assertFalse(byNumber.getValue("112").isSms)
+        assertTrue(byNumber.getValue("114").isSms)
+    }
+
+    @Test
+    fun guideTopicsHaveUniqueIdsAndCompleteNonBlankContent() {
+        val guides = FirstAidData.GUIDE_TOPICS
+        val ids = guides.map { it.id }
+        assertEquals(guides.size, ids.toSet().size)
+        assertEquals(
+            setOf("acr_dae", "etouffement", "hemorragie", "pls", "brulures", "avc"),
+            ids.toSet(),
+        )
+
+        guides.forEach { guide ->
+            assertTrue("id vide", guide.id.isNotBlank())
+            assertTrue("category vide pour ${guide.id}", guide.category.isNotBlank())
+            assertTrue("summary vide pour ${guide.id}", guide.summary.isNotBlank())
+            assertTrue("Règle vide dans ${guide.id}", guide.keyRules.all { it.isNotBlank() })
+            assertTrue("Erreur à éviter vide dans ${guide.id}", guide.mistakesToAvoid.all { it.isNotBlank() })
+        }
     }
 }

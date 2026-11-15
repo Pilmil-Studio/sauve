@@ -77,7 +77,7 @@ fun AboutScreen(
                     color = EmergencyRed,
                 )
                 Text(
-                    tr("Premiers secours anti-panique • Version 1.0.0", "Anti-panic first aid • Version 1.0.0"),
+                    tr("Premiers secours anti-panique • Version ${platform.versionName}", "Anti-panic first aid • Version ${platform.versionName}"),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity(), SauvePlatform {
 
     override val metronome: Metronome get() = cpr
     override val speech: Speech get() = speechEngine
+    override val versionName: String = BuildConfig.VERSION_NAME
 
     override val reviewReminder: ReviewReminderPort = object : ReviewReminderPort {
         override fun isEnabled(): Boolean = ReviewReminder.isEnabled(this@MainActivity)
