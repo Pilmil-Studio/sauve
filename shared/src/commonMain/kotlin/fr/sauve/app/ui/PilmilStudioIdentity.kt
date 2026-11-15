@@ -111,11 +111,11 @@ fun PilmilLegalCard(modifier: Modifier = Modifier) {
                     "Éditeur : Pilmil Studio (Alfortville, France).\n" +
                         "Confidentialité : 100 % hors-ligne, aucune permission réseau, aucun traceur, aucun compte.\n" +
                         "Licence : logiciel libre sous licence MPL-2.0.\n" +
-                        "Contact : pilmil.studio@proton.me · https://relthdrarxash.github.io",
+                        "Contact : pilmil.studio@proton.me · https://pilmil-studio.github.io",
                     "Publisher: Pilmil Studio (Alfortville, France).\n" +
                         "Privacy: 100% offline, no network permission, no trackers, no account.\n" +
                         "License: open-source software under MPL-2.0.\n" +
-                        "Contact: pilmil.studio@proton.me · https://relthdrarxash.github.io",
+                        "Contact: pilmil.studio@proton.me · https://pilmil-studio.github.io",
                 ),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
