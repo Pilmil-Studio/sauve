@@ -107,6 +107,7 @@ fun CardiacScreen(
             isRunning = false
         } else {
             isRunning = true
+            var lastRelayAlertIndex = 0L
             speechEngine.speak(tr("Massez au centre de la poitrine au rythme des vibrations", "Push in the centre of the chest in time with the vibrations"))
             metronome.start(
                 bpm = 110,
@@ -127,7 +128,9 @@ fun CardiacScreen(
                 }
 
                 // Alerte de relais toutes les 2 minutes (120 secondes)
-                if (totalSeconds > 0 && totalSeconds % 120L == 0L) {
+                val relayAlertIndex = totalSeconds / 120L
+                if (relayAlertIndex > lastRelayAlertIndex) {
+                    lastRelayAlertIndex = relayAlertIndex
                     speechEngine.speak(tr("Deux minutes écoulées : relayez-vous si vous êtes deux !", "Two minutes gone: swap over if there are two of you!"))
                 }
             }
