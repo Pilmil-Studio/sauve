@@ -71,7 +71,7 @@ fun GuideScreen(
             fontWeight = FontWeight.Bold,
         )
         Text(
-            tr("Consultez ces guides à tête reposée pour mémoriser les réflexes vitaux. Inspiré des recommandations PSC. Ne remplace pas une formation.", "Read these guides calmly, ahead of time, to memorise the life-saving reflexes. Based on French PSC recommendations. Not a substitute for training."),
+            tr("Consultez ces guides à tête reposée pour mémoriser les réflexes vitaux. Inspiré des recommandations PSC (édition de juillet 2026). Ne remplace pas une formation.", "Read these guides calmly, ahead of time, to memorise the life-saving reflexes. Based on French PSC recommendations (July 2026 edition). Not a substitute for training."),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

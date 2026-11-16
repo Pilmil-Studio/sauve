@@ -12,7 +12,7 @@ APPEL RAPIDE DES SECOURS
 Accès direct en 1 tap aux numéros d'urgence adaptés : SAMU (15), Pompiers (18), Numéro européen (112) et numéro d'urgence pour personnes sourdes et malentendantes (114 par SMS).
 
 RÉFÉRENTIELS MÉDICAUX ET SCIENTIFIQUES
-L'ensemble des conduites à tenir s'appuie sur les recommandations internationales de l'European Resuscitation Council (ERC 2021) et les référentiels nationaux de premiers secours (PSC1). Les contenus ont été relus face aux recommandations PSC publiées, mais pas encore validés par un formateur ou un médecin. Sauve est un aide-mémoire : elle ne remplace ni une formation ni l'appel aux secours.
+L'ensemble des conduites à tenir s'appuie sur les recommandations internationales de l'European Resuscitation Council (ERC 2025) et le référentiel national de premiers secours PSC (édition de juillet 2026). Les contenus ont été relus face aux recommandations PSC publiées, mais ils n'ont pas encore été validés par un formateur ou un médecin. Sauve est un aide-mémoire : elle ne remplace ni une formation ni l'appel aux secours.
 
 AUCUNE COLLECTE DE DONNÉES
 Votre téléphone reste votre outil d'intervention personnel. Aucune télémétrie, aucun compte, aucun traceur. Sauve ne remplace pas une formation aux premiers secours, mais vous donne l'assurance de ne pas paniquer face à l'inattendu.

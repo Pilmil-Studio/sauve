@@ -22,10 +22,10 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 
 | Emergency | What the app does | Medical guidelines |
 |---|---|---|
-| **Cardiac Arrest** | Rapid consciousness & breathing check, direct emergency call (15 / 112), **metronome at 110 bpm** given by a sound click and by vibration (sound can be switched off), spoken compression count (continuous or 30:2), 2-minute rescuer relay alarm, AED guide. | ERC 2021 / PSC1 |
-| **Choking (Airway Obstruction)** | Partial vs complete obstruction detection, guided **back blows then abdominal thrusts (Heimlich), up to 5 of each**, with variants for infants, pregnant and obese people, instant 1-tap transition if victim loses consciousness. | PSC1 / ERC |
-| **Severe Bleeding** | **Continuous manual direct pressure** instructions, duration timer, hands-free speakerphone emergency call, foreign body advice, tourniquet guidance with time logger. | PSC1 |
-| **Recovery (PLS) & Burns** | Step-by-step **Recovery Position (PLS)** for unconscious breathing victims, **cooling timer** for lukewarm running water (at least 10 minutes, ideally 20), FAST stroke recognition test. | PSC1 / Burns guidelines |
+| **Cardiac Arrest** | Rapid consciousness & breathing check, direct emergency call (15 / 112), **metronome at 110 bpm** given by a sound click and by vibration (sound can be switched off), spoken compression count (continuous or 30:2), 2-minute rescuer relay alarm, AED guide. | ERC 2025 / PSC (July 2026 edition) |
+| **Choking (Airway Obstruction)** | Partial vs complete obstruction detection, guided **back blows then abdominal thrusts (Heimlich), up to 5 of each**, with variants for infants, pregnant and obese people, instant 1-tap transition if victim loses consciousness. | PSC (July 2026 edition) / ERC 2025 |
+| **Severe Bleeding** | **Continuous manual direct pressure** instructions, duration timer, hands-free speakerphone emergency call, foreign body advice, tourniquet guidance with time logger. | PSC (July 2026 edition) |
+| **Recovery (PLS) & Burns** | Step-by-step **Recovery Position (PLS)** for unconscious breathing victims, **cooling timer** for lukewarm running water (at least 10 minutes, ideally 20), FAST stroke recognition test. | PSC (July 2026 edition) |
 
 ### Additional features (practice & quick access)
 
@@ -73,4 +73,4 @@ Distributed under the [Mozilla Public License 2.0](LICENSE) (MPL-2.0): you can u
 
 ## A note on development
 
-Sauve's code was developed with the help of an AI assistant (Claude, by Anthropic): the app itself embeds no artificial intelligence, the steps it describes are based on the public guidelines cited above (PSC1, ERC 2021); they were checked against the published French PSC recommendations but have not yet been validated by an instructor or a physician. Sauve is a memory aid: it replaces neither first-aid training nor calling for help. Also, the compression cadence is deterministic and covered by automated tests, and I personally maintain the project and answer issues and messages myself.
+Sauve's code was developed with the help of an AI assistant (Claude, by Anthropic): the app itself embeds no artificial intelligence, the steps it describes are based on the public guidelines cited above (ERC 2025, PSC July 2026 edition); they were checked against the published French PSC recommendations, but they have not yet been validated by an instructor or a physician. Known differences from these guidelines are listed in [`documentation/conformite-referentiels.md`](documentation/conformite-referentiels.md) (in French). Sauve is a memory aid: it replaces neither first-aid training nor calling for help. Also, the compression cadence is deterministic and covered by automated tests, and I personally maintain the project and answer issues and messages myself.

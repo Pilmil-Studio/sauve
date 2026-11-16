@@ -12,7 +12,7 @@ DIRECT EMERGENCY CALLS
 Quick one-tap access to emergency numbers adapted to European and French frameworks (15 SAMU, 18 Fire, 112 European Emergency, 114 SMS for deaf and hard-of-hearing).
 
 EVIDENCE-BASED GUIDELINES
-All protocols are based on international recommendations from the European Resuscitation Council (ERC 2021) and French national first aid guidelines (PSC1). The content was checked against the published PSC recommendations but has not yet been validated by an instructor or a physician. Sauve is a memory aid: it replaces neither training nor calling for help.
+All protocols are based on international recommendations from the European Resuscitation Council (ERC 2025) and the French national first aid reference PSC (July 2026 edition). The content was checked against the published PSC recommendations, but it has not yet been validated by an instructor or a physician. Sauve is a memory aid: it replaces neither training nor calling for help.
 
 ZERO DATA COLLECTION
 Your phone is your personal intervention tool. No tracking, no user account, no analytics. Sauve does not replace certified first aid training, but gives you clear guidance when the unexpected occurs.
