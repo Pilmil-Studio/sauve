@@ -35,6 +35,18 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 
 ---
 
+## What makes Sauve different
+
+These points can be checked in the repository:
+
+- **Offline, no Internet permission**: the Android manifest declares only vibration and notifications (optional reminder), not network access.
+- **No account**: no sign-up screen, no data sent anywhere.
+- **Free software**: source code published under the MPL-2.0 licence, free of charge, no in-app purchases.
+- **Audible and vibrating metronome**: a click on every compression at 110 per minute, together with vibration; the sound can be switched off with one tap.
+- **Widget**: an SOS widget on the home screen (Android and iOS) that opens cardiac arrest or choking directly and prepares the emergency call (the dialler opens, the app does not call for you).
+
+---
+
 ## Ethical & Technical Commitments
 
 - **Zero INTERNET permission:** No network access declared in the Android manifest (`AndroidManifest.xml`). Operates in basements, flight mode or complete blackout; data never leaves your device.

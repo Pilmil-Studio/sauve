@@ -35,6 +35,18 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 
 ---
 
+## En quoi Sauve est différente
+
+Ces points sont vérifiables dans le dépôt :
+
+- **Hors ligne et sans permission Internet** : le manifeste Android ne déclare que la vibration et les notifications (rappel facultatif), pas l'accès au réseau.
+- **Sans compte** : aucun écran d'inscription, aucune donnée envoyée.
+- **Libre** : code source publié sous licence MPL-2.0, gratuit, sans achat intégré.
+- **Métronome sonore et vibrant** : un clic à chaque compression, à 110 par minute, avec la vibration ; le son se coupe d'un appui.
+- **Widget** : un widget SOS sur l'écran d'accueil (Android et iOS) qui ouvre directement l'arrêt cardiaque ou l'étouffement, et prépare l'appel au numéro d'urgence (le composeur s'ouvre, l'appli n'appelle pas à votre place).
+
+---
+
 ## Engagements éthiques & techniques
 
 - **Zéro permission INTERNET :** Aucune autorisation réseau n'est demandée dans le manifeste Android (`AndroidManifest.xml`). L'application fonctionne sans réseau, au fond d'une cave ou en zone blanche, et aucune donnée ne sort de votre téléphone.
