@@ -25,7 +25,7 @@ Quatre cartes principales permettent de lancer immédiatement le guidage interac
 ### Outils complémentaires depuis l'accueil
 - **Entraînement (2 min)** : lance une session de révision rapide de la réanimation cardio-pulmonaire (RCP).
 - **Rappel trimestriel** : interrupteur permettant d'activer ou de désactiver une notification locale tous les 3 mois pour réviser les gestes.
-- **Fiches PSC** (`GuideScreen`) : accès aux fiches de référence hors-ligne.
+- **Fiches PSC1** (`GuideScreen`) : accès aux fiches de référence hors-ligne.
 - **À propos** (`AboutScreen`) : informations sur l'application, sa licence libre et l'absence de collecte de données.
 
 > **Accès rapide hors application** : un widget d'écran d'accueil (`SosWidget`) et des raccourcis d'icône (`@xml/shortcuts`) permettent d'ouvrir directement une fiche critique.
@@ -65,6 +65,6 @@ Regroupe trois protocoles courants :
 
 ---
 
-## 3. Fiches PSC (`GuideScreen`)
+## 3. Fiches PSC1 (`GuideScreen`)
 
 Six fiches dépliables (accordéons) résument les conduites à tenir hors situation de panique : malaise, traumatisme, perte de connaissance, brûlure, plaie grave et alerte aux secours.
