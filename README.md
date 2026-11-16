@@ -35,6 +35,8 @@ Sous l'effet du stress et de l'adrénaline, la mémoire flanche et la vue se ré
 
 ---
 
+> **État des référentiels (novembre 2026).** Les consignes ont été écrites à partir de l'ERC 2021 et du PSC1. L'ERC a publié une édition 2025 et le PSC a été révisé en 2026 : la comparaison, avec les écarts restant à trancher, est dans [`documentation/conformite-referentiels.md`](documentation/conformite-referentiels.md). Les consignes n'ont pas encore été validées par un formateur ou un médecin.
+
 ## En quoi Sauve est différente
 
 Ces points sont vérifiables dans le dépôt :

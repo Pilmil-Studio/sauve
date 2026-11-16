@@ -35,6 +35,8 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 
 ---
 
+> **Status of the guidelines (November 2026).** The instructions were written from ERC 2021 and the French PSC1. ERC published a 2025 edition and the PSC was revised in 2026: the comparison, with the open differences, is in [`documentation/conformite-referentiels.md`](documentation/conformite-referentiels.md) (in French). The instructions have not yet been validated by a first-aid trainer or a physician.
+
 ## What makes Sauve different
 
 These points can be checked in the repository:
