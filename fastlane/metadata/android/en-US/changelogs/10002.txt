@@ -1,0 +1,1 @@
+The metronome now adds an audible click on every compression, on top of the vibration, with a Sound switch to turn it off on the cardiac arrest screen. The 2-minute relay alert is fixed. The light or dark theme follows the phone setting. The version number is shown in the app. The store text and the user guide are updated.

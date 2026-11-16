@@ -1,0 +1,1 @@
+Le métronome ajoute un clic sonore à chaque compression, en plus de la vibration, avec un bouton Son pour le couper sur l'écran d'arrêt cardiaque. L'alerte de relais toutes les 2 minutes est corrigée. Le thème clair ou sombre suit celui du téléphone. Le numéro de version est affiché dans l'appli. Les textes de présentation et le guide d'utilisation sont mis à jour.

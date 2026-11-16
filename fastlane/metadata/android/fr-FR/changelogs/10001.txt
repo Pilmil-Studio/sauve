@@ -1,0 +1,1 @@
+Version de maintenance de la publication : aucun changement dans l'appli par rapport à la version 1.0.0.
