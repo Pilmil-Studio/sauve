@@ -35,6 +35,20 @@ In an emergency, adrenaline and panic induce tunnel vision and motor impairment.
 
 ---
 
+> **Status of the guidelines (November 2026).** The instructions were written from ERC 2021 and the French PSC1. ERC published a 2025 edition and the PSC was revised in 2026: the comparison, with the open differences, is in [`documentation/conformite-referentiels.md`](documentation/conformite-referentiels.md) (in French). The instructions have not yet been validated by a first-aid trainer or a physician.
+
+## What makes Sauve different
+
+These points can be checked in the repository:
+
+- **Offline, no Internet permission**: the Android manifest declares only vibration and notifications (optional reminder), not network access.
+- **No account**: no sign-up screen, no data sent anywhere.
+- **Free software**: source code published under the MPL-2.0 licence, free of charge, no in-app purchases.
+- **Audible and vibrating metronome**: a click on every compression at 110 per minute, together with vibration; the sound can be switched off with one tap.
+- **Widget**: an SOS widget on the home screen (Android and iOS) that opens cardiac arrest or choking directly and prepares the emergency call (the dialler opens, the app does not call for you).
+
+---
+
 ## Ethical & Technical Commitments
 
 - **Zero INTERNET permission:** No network access declared in the Android manifest (`AndroidManifest.xml`). Operates in basements, flight mode or complete blackout; data never leaves your device.

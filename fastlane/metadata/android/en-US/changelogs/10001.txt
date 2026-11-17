@@ -1,0 +1,1 @@
+Maintenance release: no change in the app compared with version 1.0.0.
