@@ -1,0 +1,1 @@
+Compressions: a Voice switch next to Sound, the voice count also says 30 and 60 in continuous mode, and a confirmation before leaving a massage in progress. Accessibility: headings declared for TalkBack, massage state announced, 48 dp touch targets, 14 sp minimum text on the profile, defibrillator and modes, higher contrast. Instructions aligned with the PSC1 recommendations.

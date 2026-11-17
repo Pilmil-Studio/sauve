@@ -1,0 +1,1 @@
+Massage : interrupteur Voix à côté de Son, le compte vocal dit aussi 30 et 60 en mode continu, confirmation avant de quitter un massage en cours. Accessibilité : titres déclarés pour TalkBack, état du massage annoncé, cibles de 48 dp, texte de 14 sp minimum sur le profil, le défibrillateur et les modes, contrastes relevés. Consignes alignées sur les recommandations PSC1.
