@@ -13,3 +13,16 @@ Constats avant reprise :
 8. Valeurs libres : rayons 10, 18, 20, 28 px ; marges et espacements en px sans échelle ; couleur #5B7C99 en dur dans quatre dégradés ; ombres `rgba(0,0,0,…)` en dur. Les cartes ont une bordure de 1 px, `.notice` et `.btn` de 1,5 px.
 9. Débordement de la page à 360 px : largeur de défilement du document égale à 360 px sur les quatre pages (le défilement horizontal de la galerie reste interne). Titres : trois lignes au plus à 1280 px (h1), `text-wrap: balance` déjà présent.
 10. Futures pages `sources.html` (branche `audit-novembre`) : même bloc `<style>` que les pages actuelles, mêmes noms de variables et de classes ; le bloc `<style>` des quatre pages et de ces deux futures pages doit rester identique pour la fusion.
+
+## Après reprise
+
+1. Corrigé : la galerie est une grille de 6 colonnes (1000 px et plus) ou 3 colonnes (640 à 999 px) ; les six captures sont visibles à 1280 px (157 x 279 px chacune). Sous 640 px, défilement horizontal interne, images de 200 px, calé sur la marge de la page. `loading="lazy"` retiré (images de 20 à 35 Ko).
+2. Corrigé : attributs `width="540" height="960"` (dimensions des fichiers) sur les 12 images ; hauteur rendue = largeur x 16/9, sans déformation. Cadre fait par `outline` (aucun effet sur la boîte).
+3. Sans objet : contrastes du texte rouge déjà conformes (5,38 sombre, 5,24 clair) ; aucun changement.
+4. Corrigé : `--accent-solid` du thème sombre passe de #E53935 à #D32F2F (blanc dessus : 4,98) ; bouton du simulateur de #ef4444 à #dc2626 (blanc dessus : 4,83). Thème clair inchangé (5,62). Seule nouveauté de teinte : même rouge, plus foncé.
+5. Corrigé : texte courant, cartes, navigation, pied de page et notes à 16 px minimum (échelle `--step--1` = 1 rem) ; textes du simulateur portés à 14 px. Reste sous 16 px : l'étiquette `.kicker` et les 14 px du simulateur (maquette de l'appli).
+6. Corrigé : liens de navigation, de marque et du pied de page et onglets du simulateur à 44 px de haut au moins ; mesure : aucun lien ni bouton sous 44 px sur les quatre pages.
+7. Corrigé : lien d'évitement vers le contenu (« Aller au contenu » / « Skip to content », `main` reçoit un identifiant), focus visible conservé (contour intérieur dans le simulateur), règle `@media print`, transition du simulateur coupée en `prefers-reduced-motion`. Bouton principal : bas à 517 px (360 px) et 546 px (1280 px).
+8. Corrigé : variables d'échelle typographique, d'espacement, de rayons, de bordure (1 px partout) et deux ombres ; #5B7C99 devient `--blue`. Les quatre blocs `<style>` ont les mêmes variables (deux paires identiques, chemins de polices exceptés).
+9. Vérifié : largeur de défilement du document = 360 px sur les quatre pages ; titres de trois lignes au plus à 1280 px.
+10. Non fait volontairement : les futures pages `sources.html` gardent leur ancien `<style>` (valeur sombre #E53935) tant que la branche n'est pas fusionnée ; à aligner sur ce bloc après fusion. La page anglaise n'a pas de simulateur : les règles `#simulateur` y sont inertes pour garder un bloc identique.
