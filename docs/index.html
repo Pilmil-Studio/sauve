@@ -34,9 +34,36 @@
 }
 :root {
   --bg: #0F1216; --bg2: #222830; --fg: #F2F4F7; --muted: #A9B2BE; --line: #2E353F;
-  --accent: #F0524E; --accent-solid: #E53935; --on-accent: #fff;
+  --accent: #F0524E; --accent-solid: #D32F2F; --on-accent: #fff;
+  --blue: #5B7C99;
   --panel: color-mix(in srgb, #fff 5%, transparent);
   --font: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+
+  /* Échelle typographique fluide (texte courant jamais sous 16 px) */
+  --step--2: 0.875rem;
+  --step--1: 1rem;
+  --step-0: clamp(1.0625rem, 1.02rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.08rem + 0.2vw, 1.1875rem);
+  --step-2: clamp(1.15rem, 1.1rem + 0.2vw, 1.25rem);
+  --step-3: clamp(1.6rem, 4vw, 2.3rem);
+  --step-4: clamp(2.3rem, 7vw, 4rem);
+
+  /* Échelle d'espacement */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+
+  /* Rayons, bordure et deux ombres */
+  --radius-s: 10px;
+  --radius-m: 20px;
+  --radius-l: 28px;
+  --bw: 1px;
+  --shadow-s: 0 1px 2px rgb(0 0 0 / 0.2), 0 10px 24px -10px rgb(0 0 0 / 0.35);
+  --shadow-m: 0 30px 70px -20px rgb(0 0 0 / 0.6);
+  --measure: 38em;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: light) {
@@ -44,6 +71,8 @@
     --bg: #F6F7F9; --bg2: #E6E9EE; --fg: #14181D; --muted: #55606D; --line: #D4D9E0;
     --accent: #C62828; --accent-solid: #C62828;
     --panel: color-mix(in srgb, #000 4%, transparent);
+    --shadow-s: 0 1px 2px rgb(0 0 0 / 0.12), 0 10px 24px -10px rgb(0 0 0 / 0.25);
+    --shadow-m: 0 30px 70px -20px rgb(0 0 0 / 0.35);
     color-scheme: light;
   }
 }
@@ -54,80 +83,97 @@ body {
   background-color: var(--bg);
   background-image:
     radial-gradient(48rem 34rem at 92% -6%, color-mix(in srgb, var(--accent-solid) 30%, transparent), transparent 62%),
-    radial-gradient(44rem 32rem at -8% 22%, color-mix(in srgb, #5B7C99 22%, transparent), transparent 62%),
+    radial-gradient(44rem 32rem at -8% 22%, color-mix(in srgb, var(--blue) 22%, transparent), transparent 62%),
     radial-gradient(46rem 34rem at 100% 62%, color-mix(in srgb, var(--accent-solid) 14%, transparent), transparent 62%),
-    radial-gradient(44rem 30rem at 0% 96%, color-mix(in srgb, #5B7C99 18%, transparent), transparent 62%);
+    radial-gradient(44rem 30rem at 0% 96%, color-mix(in srgb, var(--blue) 18%, transparent), transparent 62%);
   background-repeat: no-repeat;
   color: var(--fg);
   font-family: var(--font);
-  font-size: 18px;
+  font-size: var(--step-0);
   line-height: 1.6;
 }
 a { color: inherit; }
+.skip { position: absolute; left: var(--space-3); top: -4rem; z-index: 10; padding: var(--space-2) var(--space-3); border-radius: var(--radius-s); background: var(--fg); color: var(--bg); font-weight: 700; text-decoration: none; }
+.skip:focus { top: var(--space-1); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 .wrap { max-width: 1060px; margin: 0 auto; padding-inline: 20px; }
+main:focus { outline: none; }
 
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 700; font-size: 1.3rem; }
-.brand img { width: 40px; height: 40px; border-radius: 10px; display: block; }
-.nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.95rem; color: var(--muted); }
-.nav a { text-decoration: none; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 0 var(--space-3); padding-block: var(--space-2); flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: var(--space-2); min-height: 44px; text-decoration: none; font-weight: 700; font-size: 1.3rem; }
+.brand img { width: 40px; height: 40px; border-radius: var(--radius-s); display: block; }
+.nav { display: flex; gap: 0 var(--space-2); flex-wrap: wrap; font-size: var(--step--1); color: var(--muted); }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 6px; text-decoration: none; }
 .nav a:hover { color: var(--fg); text-decoration: underline; }
 
-.hero { display: grid; gap: 32px; padding-block: 28px 44px; align-items: center; }
-.kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
-h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-wrap: balance; font-weight: 700; }
-.lead { color: var(--muted); font-size: 1.15rem; max-width: 34em; margin: 20px 0 0; }
-.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 1.5px solid var(--line); }
+.hero { display: grid; gap: var(--space-5); padding-block: var(--space-4) var(--space-5); align-items: center; }
+.kicker { font-size: var(--step--2); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 var(--space-2); }
+h1 { font-size: var(--step-4); line-height: 1.04; letter-spacing: -0.02em; margin: 0; text-wrap: balance; font-weight: 700; }
+.lead { color: var(--muted); font-size: var(--step-1); max-width: 34em; margin: var(--space-3) 0 0; }
+.cta { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-4); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); min-height: 48px; padding: 0 var(--space-4); border-radius: 999px; font-weight: 700; text-decoration: none; border: var(--bw) solid var(--line); }
 .btn.primary { background: linear-gradient(120deg, var(--accent-solid), color-mix(in srgb, var(--accent-solid) 70%, #7a0d0d)); border-color: transparent; color: var(--on-accent); }
 .btn:hover { border-color: var(--fg); }
 .btn.primary:hover { filter: brightness(1.08); }
 .shot { justify-self: center; }
-.shot img { display: block; width: min(300px, 70vw); height: auto; border-radius: 28px; box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6); }
+.shot img { display: block; width: min(300px, 70vw); height: auto; border-radius: var(--radius-l); box-shadow: var(--shadow-m); }
 @media (min-width: 860px) { .hero { grid-template-columns: 1.15fr 0.85fr; } .shot { justify-self: end; } }
 
-section { padding-block: 34px; }
-h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 8px; text-wrap: balance; }
-.sub { color: var(--muted); margin: 0 0 24px; max-width: 38em; }
+section { padding-block: var(--space-5); }
+h2 { font-size: var(--step-3); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 var(--space-1); text-wrap: balance; }
+.sub { color: var(--muted); margin: 0 0 var(--space-4); max-width: var(--measure); }
 
-.cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { padding: 22px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(150deg, color-mix(in srgb, var(--accent-solid) 12%, var(--bg)), var(--panel)); min-width: 0; }
-.card h3 { margin: 0 0 8px; font-size: 1.2rem; letter-spacing: -0.01em; }
-.card p { margin: 0; color: var(--muted); font-size: 0.98rem; line-height: 1.5; }
-.card .tag { display: inline-block; margin-bottom: 10px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.cards { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.card { padding: var(--space-4); border-radius: var(--radius-m); border: var(--bw) solid var(--line); background: linear-gradient(150deg, color-mix(in srgb, var(--accent-solid) 12%, var(--bg)), var(--panel)); min-width: 0; }
+.card h3 { margin: 0 0 var(--space-1); font-size: var(--step-2); letter-spacing: -0.01em; }
+.card p { margin: 0; color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
+.card .tag { display: inline-block; margin-bottom: var(--space-1); font-size: var(--step--2); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
 
-.feat { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-.feat div { padding: 4px 0 4px 18px; border-left: 3px solid var(--accent-solid); min-width: 0; }
-.feat h3 { margin: 0 0 4px; font-size: 1.15rem; }
-.feat p { margin: 0; color: var(--muted); font-size: 0.98rem; line-height: 1.5; }
+.feat { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.feat div { padding: 4px 0 4px var(--space-3); border-left: 3px solid var(--accent-solid); min-width: 0; }
+.feat h3 { margin: 0 0 4px; font-size: var(--step-2); }
+.feat p { margin: 0; color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
 
-.gallery { display: flex; gap: 16px; overflow-x: auto; padding: 4px 20px 18px; margin-inline: -20px; scroll-snap-type: x proximity; }
-.gallery img { flex: 0 0 auto; width: 210px; height: auto; border-radius: 20px; scroll-snap-align: start; border: 1px solid var(--line); display: block; }
+.gallery { display: flex; gap: var(--space-3); overflow-x: auto; padding: 4px 20px var(--space-3); margin-inline: -20px; scroll-padding-inline: 20px; scroll-snap-type: x proximity; }
+.gallery img { flex: 0 0 auto; width: 200px; height: auto; border-radius: var(--radius-m); scroll-snap-align: start; outline: var(--bw) solid var(--line); outline-offset: calc(-1 * var(--bw)); display: block; }
+@media (min-width: 640px) {
+  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; padding: 0; margin-inline: 0; }
+  .gallery img { width: 100%; }
+}
+@media (min-width: 1000px) { .gallery { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
 
 .rules { display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); border-top: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
 .rules li { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--line); min-width: 0; }
-.rules strong { display: block; font-size: 1.08rem; }
-.rules span { color: var(--muted); font-size: 0.95rem; }
+.rules strong { display: block; font-size: var(--step-1); }
+.rules span { color: var(--muted); font-size: var(--step--1); }
 
-.notice { padding: 20px 22px; border-radius: 18px; border: 1.5px solid color-mix(in srgb, var(--accent-solid) 55%, var(--line)); background: color-mix(in srgb, var(--accent-solid) 9%, transparent); }
+.notice { padding: var(--space-3) var(--space-4); border-radius: var(--radius-m); border: var(--bw) solid color-mix(in srgb, var(--accent-solid) 55%, var(--line)); background: color-mix(in srgb, var(--accent-solid) 9%, transparent); }
 .notice p { margin: 0; }
 
-.doc { max-width: 46em; padding-block: 24px 40px; }
+.doc { max-width: 40em; padding-block: var(--space-4) var(--space-5); }
 .doc h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 8px; }
-.doc h2 { font-size: 1.4rem; margin: 34px 0 8px; }
+.doc h2 { font-size: 1.4rem; margin: var(--space-5) 0 var(--space-1); }
 .doc p, .doc li { color: var(--muted); }
 .doc p strong, .doc li strong { color: var(--fg); }
 .doc ul { padding-left: 1.2em; }
-.doc li { margin-bottom: 6px; }
+.doc li { margin-bottom: var(--space-1); }
 
-.foot { border-top: 1px solid var(--line); padding-block: 30px 46px; color: var(--muted); font-size: 0.95rem; display: grid; gap: 10px; }
+.foot { border-top: var(--bw) solid var(--line); padding-block: var(--space-4) var(--space-5); color: var(--muted); font-size: var(--step--1); display: grid; gap: 0; }
 .foot p { margin: 0; }
-.foot a { color: var(--fg); }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.foot a { color: var(--fg); display: inline-block; padding-block: 10px; }
+#simulateur button { min-height: 44px; }
+#simulateur button:focus-visible { outline-color: #fff; outline-offset: -3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } #sa-pulse { transition: none !important; } }
+@media print {
+  body { background: #fff; color: #000; }
+  .skip, .nav, .cta, #simulateur { display: none; }
+  .lead, .sub, .card p, .feat p, .rules span, .doc p, .doc li, .foot { color: #000; }
+  .card, .notice { background: none; break-inside: avoid; }
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="wrap top">
   <a class="brand" href="./"><img src="assets/icon.png" alt="" width="40" height="40">Sauve</a>
   <nav class="nav" aria-label="Navigation">
@@ -136,7 +182,7 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0
     <a href="en/" lang="en">English</a>
   </nav>
 </header>
-<main>
+<main id="contenu" tabindex="-1">
 <div class="wrap hero">
   <div>
     <p class="kicker">Premiers secours anti-panique</p>
@@ -146,7 +192,7 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0
       <a class="btn primary" href="https://github.com/Pilmil-Studio/sauve/releases">Télécharger l'APK</a>
       <a class="btn" href="https://github.com/Pilmil-Studio/sauve">Voir le code</a>
     </div>
-    <p class="sub" style="margin-top:12px;margin-bottom:0;font-size:.92rem">Version iPhone en développement · Google Play et App Store en phase de test.</p>
+    <p class="sub" style="margin-top:12px;margin-bottom:0;font-size:1rem">Version iPhone en développement · Google Play et App Store en phase de test.</p>
   </div>
   <div class="shot"><img src="assets/fr/s2.webp" alt="Arrêt cardiaque : métronome à 110 bpm" width="540" height="960"></div>
 </div>
@@ -174,12 +220,12 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0
 <section class="wrap" id="images">
   <h2>L'application en images</h2>
   <div class="gallery" role="list">
-    <img role="listitem" src="assets/fr/s1.webp" alt="Écran d'accueil" width="210" height="373" loading="lazy">
-    <img role="listitem" src="assets/fr/s2.webp" alt="Arrêt cardiaque : métronome à 110 bpm" width="210" height="373" loading="lazy">
-    <img role="listitem" src="assets/fr/s3.webp" alt="Étouffement : claques et compressions" width="210" height="373" loading="lazy">
-    <img role="listitem" src="assets/fr/s4.webp" alt="Hémorragie : compression directe" width="210" height="373" loading="lazy">
-    <img role="listitem" src="assets/fr/s5.webp" alt="Position latérale de sécurité" width="210" height="373" loading="lazy">
-    <img role="listitem" src="assets/fr/s6.webp" alt="Fonctionne sans réseau" width="210" height="373" loading="lazy">
+    <img role="listitem" src="assets/fr/s1.webp" alt="Écran d'accueil" width="540" height="960">
+    <img role="listitem" src="assets/fr/s2.webp" alt="Arrêt cardiaque : métronome à 110 bpm" width="540" height="960">
+    <img role="listitem" src="assets/fr/s3.webp" alt="Étouffement : claques et compressions" width="540" height="960">
+    <img role="listitem" src="assets/fr/s4.webp" alt="Hémorragie : compression directe" width="540" height="960">
+    <img role="listitem" src="assets/fr/s5.webp" alt="Position latérale de sécurité" width="540" height="960">
+    <img role="listitem" src="assets/fr/s6.webp" alt="Fonctionne sans réseau" width="540" height="960">
   </div>
 </section>
 
@@ -198,10 +244,10 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0
   <h2>Essayer l'application en direct</h2>
   <p class="sub">Parcourez l'écran d'urgence OLED de Sauve : appels directs, arrêt cardiaque avec métronome à 110 BPM et gestes d'étouffement.</p>
   <div style="display:flex;justify-content:center">
-    <div style="width:min(340px,100%);border:8px solid #2b2b2b;border-radius:32px;background:#0a0a0a;color:#f5f5f5;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.35);font-size:14px">
+    <div style="width:min(340px,100%);border:8px solid #2b2b2b;border-radius:32px;background:#0a0a0a;color:#f5f5f5;overflow:hidden;box-shadow:var(--shadow-s);font-size:14px">
       <div style="background:#141414;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #262626">
         <strong>Sauve</strong>
-        <span style="font-size:11px;color:#ef4444;font-weight:700">15 · 18 · 112 · 114</span>
+        <span style="font-size:14px;color:#ef4444;font-weight:700">15 · 18 · 112 · 114</span>
       </div>
       <div id="sa-screen" style="padding:14px;min-height:340px;display:grid;gap:10px;align-content:start"></div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #262626;background:#111">
@@ -235,26 +281,26 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.1; letter-spacing: -0
     if (tab === "home") {
       stopMetronome();
       scr.innerHTML = `
-        <div style="font-size:12px;color:#9ca3af">Choisissez la situation immédiate :</div>
-        <button type="button" data-go="cpr" style="text-align:left;padding:12px;border-radius:14px;border:1px solid #ef4444;background:#1f1212;color:#fff;font:inherit;cursor:pointer"><strong>Arrêt cardiaque</strong><div style="font-size:12px;color:#fca5a5">Massage &amp; métronome 110 BPM</div></button>
-        <button type="button" data-go="choke" style="text-align:left;padding:12px;border-radius:14px;border:1px solid #333;background:#161616;color:#fff;font:inherit;cursor:pointer"><strong>Étouffement</strong><div style="font-size:12px;color:#9ca3af">5 claques dans le dos + 5 compressions</div></button>
-        <div style="padding:12px;border-radius:14px;border:1px solid #333;background:#161616;font-size:13px"><strong>Hémorragie / PLS</strong><div style="font-size:12px;color:#9ca3af">Compression directe &amp; chronomètre</div></div>
+        <div style="font-size:14px;color:#9ca3af">Choisissez la situation immédiate :</div>
+        <button type="button" data-go="cpr" style="text-align:left;padding:12px;border-radius:14px;border:1px solid #ef4444;background:#1f1212;color:#fff;font:inherit;cursor:pointer"><strong>Arrêt cardiaque</strong><div style="font-size:14px;color:#fca5a5">Massage &amp; métronome 110 BPM</div></button>
+        <button type="button" data-go="choke" style="text-align:left;padding:12px;border-radius:14px;border:1px solid #333;background:#161616;color:#fff;font:inherit;cursor:pointer"><strong>Étouffement</strong><div style="font-size:14px;color:#9ca3af">5 claques dans le dos + 5 compressions</div></button>
+        <div style="padding:12px;border-radius:14px;border:1px solid #333;background:#161616;font-size:14px"><strong>Hémorragie / PLS</strong><div style="font-size:14px;color:#9ca3af">Compression directe &amp; chronomètre</div></div>
       `;
     } else if (tab === "cpr") {
       scr.innerHTML = `
         <div style="text-align:center;display:grid;gap:12px;justify-items:center;padding-top:10px">
-          <div style="font-size:13px;color:#fca5a5">Appuyez fort au centre de la poitrine (5–6 cm)</div>
+          <div style="font-size:14px;color:#fca5a5">Appuyez fort au centre de la poitrine (5–6 cm)</div>
           <div id="sa-pulse" style="width:94px;height:94px;border-radius:50%;border:3px solid #ef4444;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;transition:transform 0.1s ease">${count}</div>
-          <div id="sa-label" style="font-size:12px;color:#9ca3af">Cadence : 110 battements / minute</div>
-          <button type="button" id="sa-toggle" style="padding:10px 18px;border-radius:999px;border:0;background:#ef4444;color:#fff;font:inherit;font-weight:700;cursor:pointer">${timer ? "Arrêter" : "Démarrer le métronome"}</button>
+          <div id="sa-label" style="font-size:14px;color:#9ca3af">Cadence : 110 battements / minute</div>
+          <button type="button" id="sa-toggle" style="padding:10px 18px;border-radius:999px;border:0;background:#dc2626;color:#fff;font:inherit;font-weight:700;cursor:pointer">${timer ? "Arrêter" : "Démarrer le métronome"}</button>
         </div>
       `;
     } else {
       stopMetronome();
       scr.innerHTML = `
         <div style="font-weight:800;font-size:16px">Étouffement (adulte / enfant)</div>
-        <div style="padding:12px;border-radius:14px;border:1px solid #333;background:#161616;font-size:13px">1. Penchez la personne en avant et donnez <strong>5 claques vigoureuses</strong> entre les omoplates.</div>
-        <div style="padding:12px;border-radius:14px;border:1px solid #333;background:#161616;font-size:13px">2. Si inefficace : <strong>5 compressions abdominales</strong> vers l'intérieur et vers le haut.</div>
+        <div style="padding:12px;border-radius:14px;border:1px solid #333;background:#161616;font-size:14px">1. Penchez la personne en avant et donnez <strong>5 claques vigoureuses</strong> entre les omoplates.</div>
+        <div style="padding:12px;border-radius:14px;border:1px solid #333;background:#161616;font-size:14px">2. Si inefficace : <strong>5 compressions abdominales</strong> vers l'intérieur et vers le haut.</div>
       `;
     }
   }
