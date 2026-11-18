@@ -7,6 +7,7 @@ plugins {
     id("org.jetbrains.compose") version "1.8.2" apply false
     id("org.jetbrains.kotlinx.kover") version "0.9.1"
     id("io.gitlab.arturbosch.detekt") version "1.23.8" apply false
+    id("app.cash.paparazzi") version "1.3.5" apply false
 }
 
 dependencies {
