@@ -104,7 +104,7 @@ abstract class MarketingScreens(private val locale: Locale) {
         shot("accueil", Screen.HOME)
         // Mode entraînement : directement au massage, avec les interrupteurs Son et Voix.
         shot("massage", Screen.TRAINING)
-        shotDefile("massage_voix", Screen.TRAINING, 200.dp)
+        shotDefile("massage_voix", Screen.TRAINING, 232.dp)
         shot("etouffement", Screen.CHOKING)
         shot("hemorragie", Screen.BLEEDING)
         shot("pls", Screen.RECOVERY)
